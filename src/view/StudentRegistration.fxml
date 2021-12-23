@@ -15,7 +15,7 @@
                <children>
                   <ToggleButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" selected="true" stylesheets="@../styles/style.css" text="Register Student" textAlignment="CENTER">
                      <graphic>
-                        <FontAwesomeIconView glyphName="GRADUATION_CAP" mouseTransparent="true" size="50" strokeWidth="0.0" />
+                        <FontAwesomeIconView glyphName="GRADUATION_CAP" layoutX="5.0" mouseTransparent="true" size="50" strokeWidth="0.0" />
                      </graphic>
                      <VBox.margin>
                         <Insets />
@@ -39,6 +39,6 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="rightMainAnchor" layoutX="200.0" prefHeight="1020.0" prefWidth="1800.0" styleClass="right-main" />
+      <AnchorPane fx:id="rightMainAnchor" layoutX="200.0" prefHeight="1020.0" prefWidth="1720.0" styleClass="right-main" />
    </children>
 </AnchorPane>
