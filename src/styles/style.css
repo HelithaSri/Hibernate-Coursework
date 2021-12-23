@@ -19,7 +19,6 @@
     -fx-fill: #000000;
 }
 
-
 .left-side{
     background: rgb(35,37,38);
     /*-fx-background-color: linear-gradient(to top, rgba(35,37,38,1), rgba(65,67,69,1));*/
@@ -28,4 +27,22 @@
 
 .right-main{
     -fx-background-color: linear-gradient(to top, rgba(35,37,38,1), rgba(65,67,69,1));
+}
+
+.load-pane{
+    -fx-background-color: linear-gradient(to top, rgba(20,30,48,1), rgba(36,59,85,1));
+}
+
+.bottom-pane{
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-background-radius: 20px;
+}
+
+.btn{
+    -fx-background-radius: 50px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 60px;
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
 }

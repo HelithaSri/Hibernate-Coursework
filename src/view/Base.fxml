@@ -13,7 +13,7 @@
          <children>
             <VBox fx:id="leftSidePanel" alignment="CENTER" prefHeight="1020.0" prefWidth="200.0" spacing="30.0">
                <children>
-                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" selected="true" stylesheets="@../styles/style.css" text="Register Student" textAlignment="CENTER">
+                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#btnRegisterStudent" prefHeight="150.0" prefWidth="200.0" selected="true" stylesheets="@../styles/style.css" text="Register Student" textAlignment="CENTER">
                      <graphic>
                         <FontAwesomeIconView glyphName="GRADUATION_CAP" layoutX="5.0" mouseTransparent="true" size="50" strokeWidth="0.0" />
                      </graphic>
