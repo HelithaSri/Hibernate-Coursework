@@ -14,7 +14,6 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="1020.0" prefWidth="1720.0" styleClass="load-pane" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterStudentController">
    <children>
       <AnchorPane layoutX="29.0" layoutY="10.0" prefHeight="69.0" prefWidth="1660.0" styleClass="bottom-pane">
@@ -82,13 +81,13 @@
                   <Font name="Roboto Black" size="20.0" />
                </font>
             </Label>
-            <JFXCheckBox alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="224.0" prefHeight="21.0" prefWidth="58.0" selected="true" text=" ">
+            <JFXCheckBox alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="251.0" prefHeight="21.0" prefWidth="58.0" selected="true" text=" ">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXCheckBox>
-            <JFXComboBox labelFloat="true" layoutX="96.0" layoutY="210.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="330.0" layoutY="207.0" promptText="Program">
+            <JFXComboBox labelFloat="true" layoutX="96.0" layoutY="237.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="330.0" layoutY="234.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
@@ -98,95 +97,102 @@
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="563.0" layoutY="207.0" promptText="Duration">
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="563.0" layoutY="234.0" promptText="Duration">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="797.0" layoutY="207.0" promptText="Fee (LKR)">
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="797.0" layoutY="234.0" promptText="Fee (LKR)">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXCheckBox alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="294.0" prefHeight="21.0" prefWidth="58.0" text=" ">
+            <JFXCheckBox alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="321.0" prefHeight="21.0" prefWidth="58.0" text=" ">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXCheckBox>
-            <JFXComboBox labelFloat="true" layoutX="96.0" layoutY="280.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="330.0" layoutY="277.0" promptText="Program">
+            <JFXComboBox labelFloat="true" layoutX="96.0" layoutY="307.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="330.0" layoutY="304.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="563.0" layoutY="277.0" promptText="Duration">
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="563.0" layoutY="304.0" promptText="Duration">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="797.0" layoutY="277.0" promptText="Fee (LKR)">
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="797.0" layoutY="304.0" promptText="Fee (LKR)">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXCheckBox alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="366.0" prefHeight="21.0" prefWidth="58.0" text=" ">
+            <JFXCheckBox alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="393.0" prefHeight="21.0" prefWidth="58.0" text=" ">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXCheckBox>
-            <JFXComboBox labelFloat="true" layoutX="96.0" layoutY="352.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="330.0" layoutY="349.0" promptText="Program">
+            <JFXComboBox labelFloat="true" layoutX="96.0" layoutY="379.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="330.0" layoutY="376.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="563.0" layoutY="349.0" promptText="Duration">
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="563.0" layoutY="376.0" promptText="Duration">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="797.0" layoutY="349.0" promptText="Fee (LKR)">
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="797.0" layoutY="376.0" promptText="Fee (LKR)">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXCheckBox alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="442.0" prefHeight="21.0" prefWidth="58.0" text=" ">
+            <JFXCheckBox alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="469.0" prefHeight="21.0" prefWidth="58.0" text=" ">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXCheckBox>
-            <JFXComboBox labelFloat="true" layoutX="96.0" layoutY="428.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="330.0" layoutY="425.0" promptText="Program">
+            <JFXComboBox labelFloat="true" layoutX="96.0" layoutY="455.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="330.0" layoutY="452.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="563.0" layoutY="425.0" promptText="Duration">
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="563.0" layoutY="452.0" promptText="Duration">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="797.0" layoutY="425.0" promptText="Fee (LKR)">
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="797.0" layoutY="452.0" promptText="Fee (LKR)">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXButton buttonType="RAISED" layoutX="1364.0" layoutY="272.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #3498db;" styleClass="btn" text="Update" textFill="RED" />
-            <JFXButton buttonType="RAISED" layoutX="1108.0" layoutY="365.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #c0392b;" styleClass="btn" text="Delete" textFill="RED" />
-            <JFXButton buttonType="RAISED" layoutX="1108.0" layoutY="272.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc71;" styleClass="btn" text="Add" textFill="RED" />
-            <JFXButton buttonType="RAISED" layoutX="1364.0" layoutY="365.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #e74c3c;" styleClass="btn" text="Clear" textFill="RED" />
-            <Separator layoutX="16.0" layoutY="184.0" prefHeight="18.0" prefWidth="1624.0" />
+            <JFXButton buttonType="RAISED" layoutX="1364.0" layoutY="299.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #3498db;" styleClass="btn" text="Update" textFill="RED" />
+            <JFXButton buttonType="RAISED" layoutX="1108.0" layoutY="392.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #c0392b;" styleClass="btn" text="Delete" textFill="RED" />
+            <JFXButton buttonType="RAISED" layoutX="1108.0" layoutY="299.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc71;" styleClass="btn" text="Add" textFill="RED" />
+            <JFXButton buttonType="RAISED" layoutX="1364.0" layoutY="392.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #e74c3c;" styleClass="btn" text="Clear" textFill="RED" />
+            <Separator layoutX="16.0" layoutY="195.0" prefHeight="18.0" prefWidth="1624.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="628.0" prefHeight="376.0" prefWidth="1660.0" styleClass="bottom-pane">
          <children>
             <TableView layoutX="20.0" layoutY="74.0" prefHeight="282.0" prefWidth="1615.0">
               <columns>
-                <TableColumn prefWidth="161.6666717529297" text="C1" />
-                <TableColumn minWidth="0.0" prefWidth="238.33334350585938" text="C2" />
+                <TableColumn prefWidth="162.33334350585938" text="Student Register No" />
+                <TableColumn minWidth="0.0" prefWidth="232.0" text="Name" />
+                  <TableColumn minWidth="0.0" prefWidth="64.99996948242188" text="Age" />
+                  <TableColumn minWidth="0.0" prefWidth="322.0" text="Address" />
+                  <TableColumn minWidth="0.0" prefWidth="214.3333740234375" text="Email" />
+                  <TableColumn minWidth="0.0" prefWidth="136.0" text="DOB" />
+                  <TableColumn minWidth="0.0" prefWidth="200.3333740234375" text="NIC" />
+                  <TableColumn minWidth="0.0" prefWidth="191.6666259765625" text="Contact No" />
+                  <TableColumn minWidth="0.0" prefWidth="92.0" text="Gender" />
               </columns>
             </TableView>
-            <JFXTextField labelFloat="true" layoutX="23.0" layoutY="26.0" prefHeight="25.0" prefWidth="237.0" promptText="Search">
+            <JFXTextField labelFloat="true" layoutX="23.0" layoutY="26.0" prefHeight="38.0" prefWidth="265.0" promptText="Search">
                <font>
                   <Font name="Roboto Black" size="20.0" />
                </font>

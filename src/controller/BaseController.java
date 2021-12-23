@@ -20,4 +20,17 @@ public class BaseController {
         pane = fxmlLoader.load();
         rightMainAnchor.getChildren().setAll(pane);
     }
+
+    public void btnAddPrograms(MouseEvent mouseEvent) throws IOException {
+        AnchorPane pane;
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../view/AddPrograms.fxml"));
+        pane = fxmlLoader.load();
+        rightMainAnchor.getChildren().setAll(pane);
+    }
+
+    public void btnStudentDetails(MouseEvent mouseEvent) {
+    }
+
+    public void btnSignOut(MouseEvent mouseEvent) {
+    }
 }

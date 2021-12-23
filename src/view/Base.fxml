@@ -23,15 +23,15 @@
                      <toggleGroup>
                         <ToggleGroup fx:id="side_grp" />
                      </toggleGroup></ToggleButton>
-                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" text="Add New Training Programs" textAlignment="CENTER" toggleGroup="$side_grp" wrapText="true">
+                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#btnAddPrograms" prefHeight="150.0" prefWidth="200.0" text="Add New Training Programs" textAlignment="CENTER" toggleGroup="$side_grp" wrapText="true">
                      <graphic>
                         <FontAwesomeIconView glyphName="BOOK" mouseTransparent="true" size="50" strokeWidth="0.0" />
                      </graphic></ToggleButton>
-                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" text="Student Details" textAlignment="CENTER" toggleGroup="$side_grp">
+                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#btnStudentDetails" prefHeight="150.0" prefWidth="200.0" text="Student Details" textAlignment="CENTER" toggleGroup="$side_grp">
                      <graphic>
                         <FontAwesomeIconView glyphName="USERS" mouseTransparent="true" size="50" strokeWidth="0.0" />
                      </graphic></ToggleButton>
-                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" text="Sign Out" textAlignment="CENTER" toggleGroup="$side_grp">
+                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#btnSignOut" prefHeight="150.0" prefWidth="200.0" text="Sign Out" textAlignment="CENTER" toggleGroup="$side_grp">
                      <graphic>
                         <FontAwesomeIconView glyphName="SIGN_OUT" mouseTransparent="true" size="50" strokeWidth="0.0" />
                      </graphic></ToggleButton>
