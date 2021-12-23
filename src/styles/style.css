@@ -1,0 +1,31 @@
+.toggle-button{
+    -fx-text-fill: #ffffff;
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-size: 20px;
+
+}
+
+.toggle-button:selected{
+    -fx-text-fill: #000000;
+    -fx-background-color: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.glyph-icon{
+    -fx-fill: white;
+}
+
+.toggle-button:selected .glyph-icon{
+    -fx-fill: #000000;
+}
+
+
+.left-side{
+    background: rgb(35,37,38);
+    /*-fx-background-color: linear-gradient(to top, rgba(35,37,38,1), rgba(65,67,69,1));*/
+    -fx-background-color: linear-gradient(to top, rgba(22,34,42,1), rgba(58,96,115,1));
+}
+
+.right-main{
+    -fx-background-color: linear-gradient(to top, rgba(35,37,38,1), rgba(65,67,69,1));
+}
