@@ -46,3 +46,6 @@
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
 }
+#search{
+    -fx-fill: #1e6ef8;
+}

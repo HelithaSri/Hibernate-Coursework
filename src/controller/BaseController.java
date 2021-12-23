@@ -28,9 +28,14 @@ public class BaseController {
         rightMainAnchor.getChildren().setAll(pane);
     }
 
-    public void btnStudentDetails(MouseEvent mouseEvent) {
+    public void btnStudentDetails(MouseEvent mouseEvent) throws IOException {
+        AnchorPane pane;
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../view/StudentDetails.fxml"));
+        pane = fxmlLoader.load();
+        rightMainAnchor.getChildren().setAll(pane);
     }
 
     public void btnSignOut(MouseEvent mouseEvent) {
+
     }
 }
