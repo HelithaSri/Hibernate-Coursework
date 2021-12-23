@@ -4,6 +4,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -13,7 +15,7 @@
          <children>
             <VBox fx:id="leftSidePanel" alignment="CENTER" prefHeight="1020.0" prefWidth="200.0" spacing="30.0">
                <children>
-                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#btnRegisterStudent" prefHeight="150.0" prefWidth="200.0" selected="true" stylesheets="@../styles/style.css" text="Register Student" textAlignment="CENTER">
+                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#btnRegisterStudent" prefHeight="150.0" prefWidth="200.0" stylesheets="@../styles/style.css" text="Register Student" textAlignment="CENTER">
                      <graphic>
                         <FontAwesomeIconView glyphName="GRADUATION_CAP" layoutX="5.0" mouseTransparent="true" size="50" strokeWidth="0.0" />
                      </graphic>
@@ -39,6 +41,13 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="rightMainAnchor" layoutX="200.0" prefHeight="1020.0" prefWidth="1720.0" styleClass="right-main" />
+      <AnchorPane fx:id="rightMainAnchor" layoutX="200.0" prefHeight="1020.0" prefWidth="1720.0" styleClass="load-pane">
+         <children>
+            <ImageView fitHeight="510.0" fitWidth="545.0" layoutX="573.0" layoutY="257.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/img/cw%20logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

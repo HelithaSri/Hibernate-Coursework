@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -36,6 +37,7 @@ public class BaseController {
     }
 
     public void btnSignOut(MouseEvent mouseEvent) {
-
+        Stage window = (Stage) rightMainAnchor.getScene().getWindow();
+        window.close();
     }
 }
