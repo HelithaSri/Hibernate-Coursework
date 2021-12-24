@@ -2,6 +2,8 @@ package entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 /**
  * @author HelithaSri
@@ -21,7 +23,23 @@ public class Student implements SuperEntity {
     private String nic;
     private String contactNum;
     private String gender;
+    @OneToMany(mappedBy = "regNum")
+    private List<RegistrationDetails> registrationDetails;
 
+    public Student() {
+    }
+
+    public Student(String regNum, String name, int age, String address, String email, String dob, String nic, String contactNum, String gender) {
+        this.regNum = regNum;
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.email = email;
+        this.dob = dob;
+        this.nic = nic;
+        this.contactNum = contactNum;
+        this.gender = gender;
+    }
 
     public String getRegNum() {
         return regNum;

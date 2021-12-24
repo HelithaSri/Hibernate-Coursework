@@ -21,6 +21,15 @@ public class RegistrationDetails implements SuperEntity {
     String regNum;
     private String registerDate;
 
+    public RegistrationDetails() {
+    }
+
+    public RegistrationDetails(String programId, String regNum, String registerDate) {
+        this.programId = programId;
+        this.regNum = regNum;
+        this.registerDate = registerDate;
+    }
+
     public String getProgramId() {
         return programId;
     }

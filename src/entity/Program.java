@@ -18,6 +18,15 @@ public class Program implements SuperEntity{
     private String duration;
     private double fee;
 
+    public Program() {
+    }
+
+    public Program(String programId, String programName, String duration, double fee) {
+        this.programId = programId;
+        this.programName = programName;
+        this.duration = duration;
+        this.fee = fee;
+    }
 
     public String getProgramId() {
         return programId;
