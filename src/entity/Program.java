@@ -10,7 +10,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Program {
+public class Program implements SuperEntity{
     @Id
     private
     String programId;
