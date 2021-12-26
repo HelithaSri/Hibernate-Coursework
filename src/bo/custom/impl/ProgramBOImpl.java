@@ -2,7 +2,9 @@ package bo.custom.impl;
 
 import bo.custom.ProgramBO;
 import dao.DAOFactory;
+import dao.custom.impl.ProgramDAOImpl;
 import dto.ProgramDTO;
+import entity.Program;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +15,11 @@ import java.util.List;
  * @project HibernateCW
  */
 public class ProgramBOImpl implements ProgramBO {
-    private final ProgramBOImpl programBOImpl = (ProgramBOImpl) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.PROGRAM);
+    private final ProgramDAOImpl programDAO = (ProgramDAOImpl) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.PROGRAM);
 
     @Override
     public boolean add(ProgramDTO programDTO) {
-        return programBOImpl.add(new ProgramDTO(
+        return programDAO.add(new Program(
                 programDTO.getProgramId(),
                 programDTO.getProgramName(),
                 programDTO.getDuration(),
@@ -27,11 +29,11 @@ public class ProgramBOImpl implements ProgramBO {
 
     @Override
     public List<ProgramDTO> find() {
-        List<ProgramDTO> list = programBOImpl.find();
+        List<Program> list = programDAO.find();
         ArrayList<ProgramDTO> dtoArrayList = new ArrayList<>();
         ProgramDTO programDTO = null;
 
-        for (ProgramDTO program : list) {
+        for (Program program : list) {
             dtoArrayList.add(new ProgramDTO(
                 program.getProgramId(),
                 program.getProgramName(),
@@ -44,12 +46,12 @@ public class ProgramBOImpl implements ProgramBO {
 
     @Override
     public boolean delete(String id) {
-        return programBOImpl.delete(id);
+        return programDAO.delete(id);
     }
 
     @Override
     public boolean update(ProgramDTO programDTO) {
-        return programBOImpl.update(new ProgramDTO(
+        return programDAO.update(new Program(
                 programDTO.getProgramId(),
                 programDTO.getProgramName(),
                 programDTO.getDuration(),

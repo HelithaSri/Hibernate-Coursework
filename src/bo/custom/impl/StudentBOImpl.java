@@ -2,7 +2,10 @@ package bo.custom.impl;
 
 import bo.custom.StudentBO;
 import dao.DAOFactory;
+import dao.custom.StudentDAO;
+import dao.custom.impl.StudentDAOImpl;
 import dto.StudentDTO;
+import entity.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +16,11 @@ import java.util.List;
  * @project HibernateCW
  */
 public class StudentBOImpl implements StudentBO {
-    private final StudentBOImpl studentBOImpl = (StudentBOImpl) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+    private final StudentDAOImpl studentDAO = (StudentDAOImpl) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
 
     @Override
     public boolean add(StudentDTO studentDTO) {
-        return studentBOImpl.add(new StudentDTO(
+        return studentDAO.add(new Student(
                 studentDTO.getRegNum(),
                 studentDTO.getName(),
                 studentDTO.getAge(),
@@ -32,11 +35,11 @@ public class StudentBOImpl implements StudentBO {
 
     @Override
     public List<StudentDTO> find() {
-        List<StudentDTO> list = studentBOImpl.find();
+        List<Student> list = studentDAO.find();
         ArrayList<StudentDTO> dtoArrayList = new ArrayList<>();
         StudentDTO studentDTO = null;
 
-        for (StudentDTO student : list) {
+        for (Student student : list) {
             dtoArrayList.add(new StudentDTO(
                     student.getRegNum(),
                     student.getName(),
@@ -54,12 +57,12 @@ public class StudentBOImpl implements StudentBO {
 
     @Override
     public boolean delete(String id) {
-        return studentBOImpl.delete(id);
+        return studentDAO.delete(id);
     }
 
     @Override
     public boolean update(StudentDTO studentDTO) {
-        return studentBOImpl.update(new StudentDTO(
+        return studentDAO.update(new Student(
                 studentDTO.getRegNum(),
                 studentDTO.getName(),
                 studentDTO.getAge(),
