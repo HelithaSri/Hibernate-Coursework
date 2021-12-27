@@ -10,10 +10,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Level;
 
 public class Appinitializer extends Application {
 
     public static void main(String[] args) {
+
+        @SuppressWarnings("unused")
+        org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("org.hibernate");
+        java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF); //Or any like "INFO","SEVERE"
+
         launch(args);
     }
 

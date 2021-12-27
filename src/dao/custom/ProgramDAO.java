@@ -2,6 +2,10 @@ package dao.custom;
 
 import dao.SupperDAO;
 import entity.Program;
+import javafx.collections.ObservableList;
+import view.tm.ProgramTM;
+
+import java.util.List;
 
 /**
  * @author HelithaSri
@@ -9,4 +13,5 @@ import entity.Program;
  * @project HibernateCW
  */
 public interface ProgramDAO extends SupperDAO<Program, String> {
+    List<Program> searchPrograms(String value);
 }
