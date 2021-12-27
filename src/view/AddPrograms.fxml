@@ -22,26 +22,26 @@
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="89.0" prefHeight="225.0" prefWidth="1660.0" styleClass="bottom-pane">
          <children>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="96.0" layoutY="40.0" prefHeight="38.0" prefWidth="200.0" promptText="Program ID">
+            <JFXTextField fx:id="txtProgramId" focusColor="RED" labelFloat="true" layoutX="96.0" layoutY="40.0" prefHeight="38.0" prefWidth="200.0" promptText="Program ID">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="318.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Program">
+            <JFXTextField fx:id="txtProgram" focusColor="RED" labelFloat="true" layoutX="318.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXButton buttonType="RAISED" layoutX="988.0" layoutY="122.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #3498db;" styleClass="btn" text="Update" textFill="RED" />
-            <JFXButton buttonType="RAISED" layoutX="1429.0" layoutY="121.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #c0392b;" styleClass="btn" text="Delete" textFill="RED" />
-            <JFXButton buttonType="RAISED" layoutX="767.0" layoutY="122.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc71;" styleClass="btn" text="Add" textFill="RED" />
-            <JFXButton buttonType="RAISED" layoutX="1209.0" layoutY="121.0" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #e74c3c;" styleClass="btn" text="Clear" textFill="RED" />
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="571.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Duration">
+            <JFXButton buttonType="RAISED" layoutX="988.0" layoutY="122.0" onMouseClicked="#btnUpdate" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #3498db;" styleClass="btn" text="Update" textFill="RED" />
+            <JFXButton buttonType="RAISED" layoutX="1429.0" layoutY="121.0" onMouseClicked="#btnDelete" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #c0392b;" styleClass="btn" text="Delete" textFill="RED" />
+            <JFXButton buttonType="RAISED" layoutX="767.0" layoutY="122.0" onMouseClicked="#btnAdd" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc71;" styleClass="btn" text="Add" textFill="RED" />
+            <JFXButton buttonType="RAISED" layoutX="1209.0" layoutY="121.0" onMouseClicked="#btnClear" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #e74c3c;" styleClass="btn" text="Clear" textFill="RED" />
+            <JFXTextField fx:id="txtDuration" focusColor="RED" labelFloat="true" layoutX="571.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Duration">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="824.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Fee (LKR)">
+            <JFXTextField fx:id="txtFee" focusColor="RED" labelFloat="true" layoutX="824.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Fee (LKR)">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
@@ -50,15 +50,15 @@
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="323.0" prefHeight="681.0" prefWidth="1660.0" styleClass="bottom-pane">
          <children>
-            <TableView layoutX="32.0" layoutY="77.0" prefHeight="587.0" prefWidth="1599.0">
+            <TableView fx:id="tblTrainingProgram" layoutX="32.0" layoutY="77.0" prefHeight="587.0" prefWidth="1599.0">
                <columns>
-                  <TableColumn prefWidth="337.33331298828125" text="Program ID" />
-                  <TableColumn minWidth="0.0" prefWidth="587.6666870117188" text="Program" />
-                  <TableColumn minWidth="0.0" prefWidth="412.33331298828125" text="Duration" />
-                  <TableColumn minWidth="0.0" prefWidth="264.0" text="Fee (LKR)" />
+                  <TableColumn fx:id="colProgramId" prefWidth="337.33331298828125" text="Program ID" />
+                  <TableColumn fx:id="colProgram" minWidth="0.0" prefWidth="587.6666870117188" text="Program" />
+                  <TableColumn fx:id="colDuration" minWidth="0.0" prefWidth="412.33331298828125" text="Duration" />
+                  <TableColumn fx:id="colFee" minWidth="0.0" prefWidth="264.0" text="Fee (LKR)" />
                </columns>
             </TableView>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="35.0" layoutY="26.0" prefHeight="38.0" prefWidth="413.0" promptText="Search">
+            <JFXTextField fx:id="txtSearch" focusColor="RED" labelFloat="true" layoutX="35.0" layoutY="26.0" prefHeight="38.0" prefWidth="413.0" promptText="Search">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
@@ -66,12 +66,12 @@
             <FontAwesomeIconView id="search" glyphName="SEARCH" layoutX="418.0" layoutY="53.0" mouseTransparent="true" size="30" />
          </children>
       </AnchorPane>
-      <Label layoutX="73.0" layoutY="30.0" text="2021-12-23">
+      <Label fx:id="lblDate" layoutX="73.0" layoutY="30.0" text="2021-12-23">
          <font>
             <Font name="Roboto Black" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="1517.0" layoutY="30.0" text="21 : 05 : 00">
+      <Label fx:id="lblTime" layoutX="1517.0" layoutY="30.0" text="21 : 05 : 00">
          <font>
             <Font name="Roboto Black" size="25.0" />
          </font>
