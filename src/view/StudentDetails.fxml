@@ -27,7 +27,7 @@
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="89.0" prefHeight="142.0" prefWidth="1660.0" styleClass="bottom-pane">
          <children>
-            <JFXTextField fx:id="txtSearch" focusColor="RED" labelFloat="true" layoutX="96.0" layoutY="46.0" prefHeight="46.0" prefWidth="413.0" promptText="Search">
+            <JFXTextField focusColor="RED" labelFloat="true" layoutX="96.0" layoutY="46.0" onKeyReleased="#onKeyReleased" prefHeight="46.0" prefWidth="413.0" promptText="Search">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>

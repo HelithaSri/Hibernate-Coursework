@@ -205,7 +205,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <JFXTextField fx:id="txtSearch" focusColor="RED" labelFloat="true" layoutX="52.0" layoutY="654.0" prefHeight="38.0" prefWidth="413.0" promptText="Search">
+      <JFXTextField focusColor="RED" labelFloat="true" layoutX="52.0" layoutY="654.0" onKeyReleased="#onKeyReleased" prefHeight="38.0" prefWidth="413.0" promptText="Search">
          <font>
             <Font name="Roboto Bold" size="20.0" />
          </font>

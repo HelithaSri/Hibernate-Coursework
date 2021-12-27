@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -37,5 +38,8 @@ public class StudentDetailsController {
     public Label lblTime;
 
     public void btnClear(MouseEvent mouseEvent) {
+    }
+
+    public void onKeyReleased(KeyEvent keyEvent) {
     }
 }

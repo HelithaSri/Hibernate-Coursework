@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyEvent;
 
 /**
  * @author HelithaSri
@@ -61,4 +62,7 @@ public class RegisterStudentController {
     public TableColumn colContact;
     public TableColumn colGender;
     public JFXTextField txtSearch;
+
+    public void onKeyReleased(KeyEvent keyEvent) {
+    }
 }
