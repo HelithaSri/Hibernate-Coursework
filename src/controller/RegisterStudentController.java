@@ -128,7 +128,7 @@ public class RegisterStudentController {
 
     }
 
-    private void loadProgramId(){
+    private void loadProgramId() {
         List<String> allProgramIds = programBO.getAllProgramIds();
         cmbCourseId1.getItems().addAll(allProgramIds);
         cmbCourseId2.getItems().addAll(allProgramIds);
@@ -136,7 +136,7 @@ public class RegisterStudentController {
         cmbCourseId4.getItems().addAll(allProgramIds);
     }
 
-    private void checkBoxDisable(){
+    private void checkBoxDisable() {
         cmbCourseId2.setDisable(true);
         txtProgram2.setDisable(true);
         txtDuration2.setDisable(true);
@@ -154,36 +154,36 @@ public class RegisterStudentController {
     }
 
     public void onClickCheckBox(MouseEvent mouseEvent) {
-        if (checkBox2.isSelected()){
+        if (checkBox2.isSelected()) {
             cmbCourseId2.setDisable(false);
             txtProgram2.setDisable(false);
             txtDuration2.setDisable(false);
             txtFee2.setDisable(false);
-        }else{
+        } else {
             cmbCourseId2.setDisable(true);
             txtProgram2.setDisable(true);
             txtDuration2.setDisable(true);
             txtFee2.setDisable(true);
         }
 
-        if (checkBox3.isSelected()){
+        if (checkBox3.isSelected()) {
             cmbCourseId3.setDisable(false);
             txtProgram3.setDisable(false);
             txtDuration3.setDisable(false);
             txtFee3.setDisable(false);
-        }else{
+        } else {
             cmbCourseId3.setDisable(true);
             txtProgram3.setDisable(true);
             txtDuration3.setDisable(true);
             txtFee3.setDisable(true);
         }
 
-        if (checkBox4.isSelected()){
+        if (checkBox4.isSelected()) {
             cmbCourseId4.setDisable(false);
             txtProgram4.setDisable(false);
             txtDuration4.setDisable(false);
             txtFee4.setDisable(false);
-        }else{
+        } else {
             cmbCourseId4.setDisable(true);
             txtProgram4.setDisable(true);
             txtDuration4.setDisable(true);
@@ -206,7 +206,7 @@ public class RegisterStudentController {
         clock.play();
     }
 
-    private void setProgramData(String programId){
+/*    private void setProgramData(String programId){
         ProgramDTO programDetails = programBO.getProgramDetails(programId);
 
         System.out.println(programDetails);
@@ -216,6 +216,17 @@ public class RegisterStudentController {
             txtDuration.setText(programDetails.getDuration());
             txtFee1.setText(programDetails.getFee()+"");
         }
+    }*/
+
+    private void setProgramData(JFXTextField enterProgram, JFXTextField enterDuration, JFXTextField enterFee, String ProgramID) {
+        ProgramDTO programDetails = programBO.getProgramDetails(ProgramID);
+
+        if (programDetails == null) {
+        } else {
+            enterProgram.setText(programDetails.getProgramName());
+            enterDuration.setText(programDetails.getDuration());
+            enterFee.setText(programDetails.getFee() + "");
+        }
     }
 
     public void initialize() {
@@ -224,8 +235,23 @@ public class RegisterStudentController {
         loadDateAndTime();
 
         cmbCourseId1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(newValue);
-            setProgramData(newValue);
+//            System.out.println(newValue);
+            setProgramData(txtProgram1, txtDuration, txtFee1, newValue);
+        });
+
+        cmbCourseId2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println(newValue);
+            setProgramData(txtProgram2, txtDuration2, txtFee2, newValue);
+        });
+
+        cmbCourseId3.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println(newValue);
+            setProgramData(txtProgram3, txtDuration3, txtFee3, newValue);
+        });
+
+        cmbCourseId4.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println(newValue);
+            setProgramData(txtProgram4, txtDuration4, txtFee4, newValue);
         });
     }
 }

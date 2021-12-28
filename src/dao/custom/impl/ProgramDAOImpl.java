@@ -106,8 +106,8 @@ public class ProgramDAOImpl implements ProgramDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Query query = session.createQuery("FROM Program p WHERE p.programId LIKE ?1");
-        query.setParameter(1, '%' + id + '%');
+        Query query = session.createQuery("FROM Program p WHERE p.programId = ?1");
+        query.setParameter(1,  id);
         List<Program> resultList = query.getResultList();
 
         transaction.commit();
