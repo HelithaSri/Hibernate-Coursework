@@ -25,4 +25,6 @@ public interface ProgramBO extends SuperBO {
     ObservableList<ProgramTM> search(String value);
 
     List<String> getAllProgramIds();
+
+    ProgramDTO getProgramDetails (String id);
 }

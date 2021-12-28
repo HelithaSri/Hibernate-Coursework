@@ -1,6 +1,7 @@
 package dao.custom;
 
 import dao.SupperDAO;
+import dto.ProgramDTO;
 import entity.Program;
 import javafx.collections.ObservableList;
 import view.tm.ProgramTM;
@@ -16,4 +17,6 @@ public interface ProgramDAO extends SupperDAO<Program, String> {
     List<Program> searchPrograms(String value);
 
     List<String> getAllProgramIds();
+
+    ProgramDTO getProgramDetails (String id);
 }

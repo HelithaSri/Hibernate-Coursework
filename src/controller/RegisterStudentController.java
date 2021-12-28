@@ -4,11 +4,20 @@ import bo.BOFactory;
 import bo.custom.impl.ProgramBOImpl;
 import bo.custom.impl.StudentBOImpl;
 import com.jfoenix.controls.*;
+import dto.ProgramDTO;
 import dto.StudentDTO;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,23 +40,23 @@ public class RegisterStudentController {
     public ToggleGroup gender;
     public JFXRadioButton txtGenderFemale;
     public JFXCheckBox checkBox1;
-    public JFXComboBox cmbCourseId1;
+    public JFXComboBox<String> cmbCourseId1;
     public JFXTextField txtProgram1;
     public JFXTextField txtContact;
     public JFXTextField txtDuration;
     public JFXTextField txtFee1;
     public JFXCheckBox checkBox2;
-    public JFXComboBox cmbCourseId2;
+    public JFXComboBox<String> cmbCourseId2;
     public JFXTextField txtProgram2;
     public JFXTextField txtDuration2;
     public JFXTextField txtFee2;
     public JFXCheckBox checkBox3;
-    public JFXComboBox cmbCourseId3;
+    public JFXComboBox<String> cmbCourseId3;
     public JFXTextField txtProgram3;
     public JFXTextField txtDuration3;
     public JFXTextField txtFee3;
     public JFXCheckBox checkBox4;
-    public JFXComboBox cmbCourseId4;
+    public JFXComboBox<String> cmbCourseId4;
     public JFXTextField txtProgram4;
     public JFXTextField txtDuration4;
     public JFXTextField txtFee4;
@@ -83,7 +92,7 @@ public class RegisterStudentController {
 
     }
 
-    public String selectGender() {
+    private String selectGender() {
         if (txtGenderMale.isSelected()) {
             return "Male";
         } else if (txtGenderFemale.isSelected()) {
@@ -127,7 +136,97 @@ public class RegisterStudentController {
         cmbCourseId4.getItems().addAll(allProgramIds);
     }
 
+    private void checkBoxDisable(){
+        cmbCourseId2.setDisable(true);
+        txtProgram2.setDisable(true);
+        txtDuration2.setDisable(true);
+        txtFee2.setDisable(true);
+
+        cmbCourseId3.setDisable(true);
+        txtProgram3.setDisable(true);
+        txtDuration3.setDisable(true);
+        txtFee3.setDisable(true);
+
+        cmbCourseId4.setDisable(true);
+        txtProgram4.setDisable(true);
+        txtDuration4.setDisable(true);
+        txtFee4.setDisable(true);
+    }
+
+    public void onClickCheckBox(MouseEvent mouseEvent) {
+        if (checkBox2.isSelected()){
+            cmbCourseId2.setDisable(false);
+            txtProgram2.setDisable(false);
+            txtDuration2.setDisable(false);
+            txtFee2.setDisable(false);
+        }else{
+            cmbCourseId2.setDisable(true);
+            txtProgram2.setDisable(true);
+            txtDuration2.setDisable(true);
+            txtFee2.setDisable(true);
+        }
+
+        if (checkBox3.isSelected()){
+            cmbCourseId3.setDisable(false);
+            txtProgram3.setDisable(false);
+            txtDuration3.setDisable(false);
+            txtFee3.setDisable(false);
+        }else{
+            cmbCourseId3.setDisable(true);
+            txtProgram3.setDisable(true);
+            txtDuration3.setDisable(true);
+            txtFee3.setDisable(true);
+        }
+
+        if (checkBox4.isSelected()){
+            cmbCourseId4.setDisable(false);
+            txtProgram4.setDisable(false);
+            txtDuration4.setDisable(false);
+            txtFee4.setDisable(false);
+        }else{
+            cmbCourseId4.setDisable(true);
+            txtProgram4.setDisable(true);
+            txtDuration4.setDisable(true);
+            txtFee4.setDisable(true);
+        }
+    }
+
+    private void loadDateAndTime() {
+        // load Date
+        Date date = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy.MM.dd");
+        lblDate.setText(f.format(date));
+
+        // load Time
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            lblTime.setText(LocalDateTime.now().format(formatter));
+        }), new KeyFrame(Duration.seconds(1)));
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+    }
+
+    private void setProgramData(String programId){
+        ProgramDTO programDetails = programBO.getProgramDetails(programId);
+
+        System.out.println(programDetails);
+        if (programDetails == null){
+            System.out.println("waradi huththo");
+        } else {
+            txtProgram1.setText(programDetails.getProgramName());
+            txtDuration.setText(programDetails.getDuration());
+            txtFee1.setText(programDetails.getFee()+"");
+        }
+    }
+
     public void initialize() {
         loadProgramId();
+        checkBoxDisable();
+        loadDateAndTime();
+
+        cmbCourseId1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(newValue);
+            setProgramData(newValue);
+        });
     }
 }

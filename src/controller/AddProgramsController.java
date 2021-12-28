@@ -4,6 +4,9 @@ import bo.BOFactory;
 import bo.custom.impl.ProgramBOImpl;
 import com.jfoenix.controls.JFXTextField;
 import dto.ProgramDTO;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -12,9 +15,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import view.tm.ProgramTM;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * @author HelithaSri
@@ -168,16 +176,6 @@ public class AddProgramsController {
         tblTrainingProgram.setItems(list);
     }
 
-    public void initialize() {
-        try {
-            showProgramsOnTable();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void onMouseClickedTbl(MouseEvent mouseEvent) {
         try {
             ProgramTM selectedItem = tblTrainingProgram.getSelectionModel().getSelectedItem();
@@ -188,5 +186,32 @@ public class AddProgramsController {
         } catch (Exception e) {
 
         }
+    }
+
+    private void loadDateAndTime() {
+        // load Date
+        Date date = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy.MM.dd");
+        lblDate.setText(f.format(date));
+
+        // load Time
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            lblTime.setText(LocalDateTime.now().format(formatter));
+        }), new KeyFrame(Duration.seconds(1)));
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+    }
+
+    public void initialize() {
+        try {
+            showProgramsOnTable();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        loadDateAndTime();
     }
 }
