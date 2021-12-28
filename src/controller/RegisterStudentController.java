@@ -1,11 +1,15 @@
 package controller;
 
+import bo.BOFactory;
+import bo.custom.impl.ProgramBOImpl;
+import bo.custom.impl.StudentBOImpl;
 import com.jfoenix.controls.*;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleGroup;
+import dto.StudentDTO;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+
+import java.util.List;
 
 /**
  * @author HelithaSri
@@ -63,6 +67,67 @@ public class RegisterStudentController {
     public TableColumn colGender;
     public JFXTextField txtSearch;
 
+    StudentBOImpl studentBO = (StudentBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.STUDENT);
+    ProgramBOImpl programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.PROGRAM);
+
+
     public void onKeyReleased(KeyEvent keyEvent) {
+
+    }
+
+    public void onClickUpdate(MouseEvent mouseEvent) {
+
+    }
+
+    public void onClickDelete(MouseEvent mouseEvent) {
+
+    }
+
+    public String selectGender() {
+        if (txtGenderMale.isSelected()) {
+            return "Male";
+        } else if (txtGenderFemale.isSelected()) {
+            return "Female";
+        } else {
+            return null;
+        }
+    }
+
+    public void onClickAdd(MouseEvent mouseEvent) {
+
+        StudentDTO student = new StudentDTO(
+                txtStdnRegNo.getText(),
+                txtName.getText(),
+                Integer.parseInt(txtAge.getText()),
+                txtAddress.getText(),
+                txtEmail.getText(),
+                txtDOB.getText(),
+                txtNic.getText(),
+                txtContact.getText(),
+                selectGender()
+        );
+
+        if (studentBO.add(student)) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
+
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Try Again").show();
+        }
+    }
+
+    public void onClickClear(MouseEvent mouseEvent) {
+
+    }
+
+    private void loadProgramId(){
+        List<String> allProgramIds = programBO.getAllProgramIds();
+        cmbCourseId1.getItems().addAll(allProgramIds);
+        cmbCourseId2.getItems().addAll(allProgramIds);
+        cmbCourseId3.getItems().addAll(allProgramIds);
+        cmbCourseId4.getItems().addAll(allProgramIds);
+    }
+
+    public void initialize() {
+        loadProgramId();
     }
 }

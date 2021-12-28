@@ -14,4 +14,6 @@ import java.util.List;
  */
 public interface ProgramDAO extends SupperDAO<Program, String> {
     List<Program> searchPrograms(String value);
+
+    List<String> getAllProgramIds();
 }
