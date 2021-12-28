@@ -211,7 +211,6 @@ public class RegisterStudentController {
 
         System.out.println(programDetails);
         if (programDetails == null){
-            System.out.println("waradi huththo");
         } else {
             txtProgram1.setText(programDetails.getProgramName());
             txtDuration.setText(programDetails.getDuration());
