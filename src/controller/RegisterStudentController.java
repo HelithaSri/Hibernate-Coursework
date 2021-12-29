@@ -6,14 +6,23 @@ import bo.custom.impl.StudentBOImpl;
 import com.jfoenix.controls.*;
 import dto.ProgramDTO;
 import dto.StudentDTO;
+import entity.Program;
+import entity.Student;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.FactoryConfiguration;
+import view.tm.StudentTM;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -116,6 +125,30 @@ public class RegisterStudentController {
                 selectGender()
         );
 
+        /*StudentDTO student1 = new StudentDTO(
+                txtStdnRegNo.getText(),
+                txtName.getText(),
+                Integer.parseInt(txtAge.getText()),
+                txtAddress.getText(),
+                txtEmail.getText(),
+                txtDOB.getText(),
+                txtNic.getText(),
+                txtContact.getText(),
+                selectGender()
+        );
+
+        Program program = new Program();
+        program.getStudentList().add(student1);
+
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.save(program);
+        session.save(student1);
+
+        transaction.commit();
+        session.close();*/
+
         if (studentBO.add(student)) {
             new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
 
@@ -206,7 +239,7 @@ public class RegisterStudentController {
         clock.play();
     }
 
-/*    private void setProgramData(String programId){
+    /*    private void setProgramData(String programId){
         ProgramDTO programDetails = programBO.getProgramDetails(programId);
 
         System.out.println(programDetails);
@@ -229,29 +262,50 @@ public class RegisterStudentController {
         }
     }
 
+    public void showStudentsOnTable() throws SQLException, ClassNotFoundException {
+
+        ObservableList<StudentTM> list = studentBO.find();
+
+        colStudentRegNo.setCellValueFactory(new PropertyValueFactory<>("regNum"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colDOB.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
+        colContact.setCellValueFactory(new PropertyValueFactory<>("contactNum"));
+        colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+
+        tblRegStudent.setItems(list);
+    }
+
     public void initialize() {
         loadProgramId();
         checkBoxDisable();
         loadDateAndTime();
 
         cmbCourseId1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            System.out.println(newValue);
             setProgramData(txtProgram1, txtDuration, txtFee1, newValue);
         });
 
         cmbCourseId2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            System.out.println(newValue);
             setProgramData(txtProgram2, txtDuration2, txtFee2, newValue);
         });
 
         cmbCourseId3.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            System.out.println(newValue);
             setProgramData(txtProgram3, txtDuration3, txtFee3, newValue);
         });
 
         cmbCourseId4.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            System.out.println(newValue);
             setProgramData(txtProgram4, txtDuration4, txtFee4, newValue);
         });
+
+        try {
+            showStudentsOnTable();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

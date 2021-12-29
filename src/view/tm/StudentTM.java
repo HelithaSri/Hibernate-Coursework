@@ -5,7 +5,7 @@ package view.tm;
  * @created 12/27/2021 - 4:35 PM
  * @project HibernateCW
  */
-public class Student {
+public class StudentTM {
     private String regNum;
     private String name;
     private int age;
@@ -16,10 +16,10 @@ public class Student {
     private String contactNum;
     private String gender;
 
-    public Student() {
+    public StudentTM() {
     }
 
-    public Student(String regNum, String name, int age, String address, String email, String dob, String nic, String contactNum, String gender) {
+    public StudentTM(String regNum, String name, int age, String address, String email, String dob, String nic, String contactNum, String gender) {
         this.regNum = regNum;
         this.name = name;
         this.age = age;
@@ -105,7 +105,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "StudentTM{" +
                 "regNum='" + regNum + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +

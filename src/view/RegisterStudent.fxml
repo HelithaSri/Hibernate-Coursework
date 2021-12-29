@@ -92,7 +92,7 @@
                   <Font name="Roboto Black" size="20.0" />
                </font>
             </Label>
-            <JFXCheckBox fx:id="checkBox1" alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="251.0" mouseTransparent="true" prefHeight="21.0" prefWidth="58.0" selected="true" text=" ">
+            <JFXCheckBox fx:id="checkBox1" alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="251.0" mouseTransparent="true" prefHeight="20.0" prefWidth="0.0" selected="true" text=" ">
                <font>
                   <Font size="15.0" />
                </font>
@@ -118,7 +118,7 @@
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXCheckBox fx:id="checkBox2" alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="321.0" onMouseClicked="#onClickCheckBox" prefHeight="21.0" prefWidth="58.0" text=" ">
+            <JFXCheckBox fx:id="checkBox2" alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="321.0" onMouseClicked="#onClickCheckBox" prefHeight="20.0" prefWidth="0.0" text=" ">
                <font>
                   <Font size="15.0" />
                </font>
@@ -139,7 +139,7 @@
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXCheckBox fx:id="checkBox3" alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="393.0" onMouseClicked="#onClickCheckBox" prefHeight="21.0" prefWidth="58.0" text=" ">
+            <JFXCheckBox fx:id="checkBox3" alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="393.0" onMouseClicked="#onClickCheckBox" prefHeight="20.0" prefWidth="0.0" text=" ">
                <font>
                   <Font size="15.0" />
                </font>
@@ -160,7 +160,7 @@
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXCheckBox fx:id="checkBox4" alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="469.0" onMouseClicked="#onClickCheckBox" prefHeight="21.0" prefWidth="58.0" text=" ">
+            <JFXCheckBox fx:id="checkBox4" alignment="CENTER" checkedColor="#f22828" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="57.0" layoutY="469.0" onMouseClicked="#onClickCheckBox" prefHeight="20.0" prefWidth="0.0" text=" ">
                <font>
                   <Font size="15.0" />
                </font>

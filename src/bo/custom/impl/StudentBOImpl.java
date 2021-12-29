@@ -6,6 +6,10 @@ import dao.custom.StudentDAO;
 import dao.custom.impl.StudentDAOImpl;
 import dto.StudentDTO;
 import entity.Student;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import view.tm.ProgramTM;
+import view.tm.StudentTM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +38,12 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public List<StudentDTO> find() {
+    public ObservableList<StudentTM> find() {
         List<Student> list = studentDAO.find();
-        ArrayList<StudentDTO> dtoArrayList = new ArrayList<>();
-        StudentDTO studentDTO = null;
+        ObservableList<StudentTM> dtoArrayList = FXCollections.observableArrayList();
 
         for (Student student : list) {
-            dtoArrayList.add(new StudentDTO(
+            dtoArrayList.add(new StudentTM(
                     student.getRegNum(),
                     student.getName(),
                     student.getAge(),

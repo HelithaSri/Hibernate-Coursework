@@ -115,9 +115,17 @@ public class Student implements SuperEntity {
         this.gender = gender;
     }
 
+    public List<Program> getProgramList() {
+        return programList;
+    }
+
+    public void setProgramList(List<Program> programList) {
+        this.programList = programList;
+    }
+
     @Override
     public String toString() {
-        return "Student{" +
+        return "StudentTM{" +
                 "regNum='" + regNum + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +

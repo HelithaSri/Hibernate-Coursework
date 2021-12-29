@@ -3,6 +3,9 @@ package bo.custom;
 import bo.SuperBO;
 import dao.custom.StudentDAO;
 import dto.StudentDTO;
+import entity.Student;
+import javafx.collections.ObservableList;
+import view.tm.StudentTM;
 
 import java.util.List;
 
@@ -14,7 +17,7 @@ import java.util.List;
 public interface StudentBO extends SuperBO {
     boolean add(StudentDTO studentDTO);
 
-    List<StudentDTO> find();
+    ObservableList<StudentTM> find();
 
     boolean delete(String id);
 
