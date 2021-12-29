@@ -1,5 +1,9 @@
 package dto;
 
+import entity.Student;
+
+import java.util.List;
+
 /**
  * @author HelithaSri
  * @created 12/24/2021 - 11:16 PM
@@ -11,6 +15,7 @@ public class ProgramDTO {
     private String programName;
     private String duration;
     private double fee;
+
 
     public ProgramDTO() {
     }
@@ -59,4 +64,6 @@ public class ProgramDTO {
     public void setFee(double fee) {
         this.fee = fee;
     }
+
+
 }

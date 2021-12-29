@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +26,8 @@ public class Student implements SuperEntity {
     private String contactNum;
     private String gender;
 
-    @ManyToMany(mappedBy = "studentList")
-    private List<Program> programList;
+    @ManyToMany// (mappedBy = "studentList")
+    private List<Program> programList = new ArrayList<>();
 
     public Student() {
     }
@@ -41,6 +42,19 @@ public class Student implements SuperEntity {
         this.nic = nic;
         this.contactNum = contactNum;
         this.gender = gender;
+    }
+
+    public Student(String regNum, String name, int age, String address, String email, String dob, String nic, String contactNum, String gender, List<Program> programList) {
+        this.regNum = regNum;
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.email = email;
+        this.dob = dob;
+        this.nic = nic;
+        this.contactNum = contactNum;
+        this.gender = gender;
+        this.programList = programList;
     }
 
     public String getRegNum() {
@@ -125,7 +139,7 @@ public class Student implements SuperEntity {
 
     @Override
     public String toString() {
-        return "StudentTM{" +
+        return "Student{" +
                 "regNum='" + regNum + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
@@ -135,6 +149,7 @@ public class Student implements SuperEntity {
                 ", nic='" + nic + '\'' +
                 ", contactNum='" + contactNum + '\'' +
                 ", gender='" + gender + '\'' +
+                ", programList=" + programList +
                 '}';
     }
 }

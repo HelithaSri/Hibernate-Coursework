@@ -1,6 +1,7 @@
 package dao.custom;
 
 import dao.SupperDAO;
+import entity.Program;
 import entity.Student;
 
 import java.util.List;
@@ -11,5 +12,5 @@ import java.util.List;
  * @project HibernateCW
  */
 public interface StudentDAO extends SupperDAO<Student, String> {
-
+    boolean register(Student student, String cmb1, String cmb2, String cmb3, String cmb4);
 }

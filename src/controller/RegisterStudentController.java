@@ -4,6 +4,8 @@ import bo.BOFactory;
 import bo.custom.impl.ProgramBOImpl;
 import bo.custom.impl.StudentBOImpl;
 import com.jfoenix.controls.*;
+import dao.DAOFactory;
+import dao.custom.impl.StudentDAOImpl;
 import dto.ProgramDTO;
 import dto.StudentDTO;
 import entity.Program;
@@ -20,6 +22,7 @@ import javafx.util.Duration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
+import view.tm.ProgramTM;
 import view.tm.StudentTM;
 
 import java.sql.SQLException;
@@ -87,7 +90,7 @@ public class RegisterStudentController {
 
     StudentBOImpl studentBO = (StudentBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.STUDENT);
     ProgramBOImpl programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.PROGRAM);
-
+    StudentDAOImpl studentDAO = (StudentDAOImpl) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
 
     public void onKeyReleased(KeyEvent keyEvent) {
 
@@ -113,48 +116,59 @@ public class RegisterStudentController {
 
     public void onClickAdd(MouseEvent mouseEvent) {
 
-        StudentDTO student = new StudentDTO(
-                txtStdnRegNo.getText(),
-                txtName.getText(),
-                Integer.parseInt(txtAge.getText()),
-                txtAddress.getText(),
-                txtEmail.getText(),
-                txtDOB.getText(),
-                txtNic.getText(),
-                txtContact.getText(),
-                selectGender()
-        );
+        Student student1 = new Student();
 
-        /*StudentDTO student1 = new StudentDTO(
-                txtStdnRegNo.getText(),
-                txtName.getText(),
-                Integer.parseInt(txtAge.getText()),
-                txtAddress.getText(),
-                txtEmail.getText(),
-                txtDOB.getText(),
-                txtNic.getText(),
-                txtContact.getText(),
-                selectGender()
-        );
+        student1.setRegNum(txtStdnRegNo.getText());
+        student1.setName(txtName.getText());
+        student1.setAge(Integer.parseInt(txtAge.getText()));
+        student1.setAddress(txtAddress.getText());
+        student1.setEmail(txtEmail.getText());
+        student1.setDob(txtDOB.getText());
+        student1.setNic(txtNic.getText());
+        student1.setContactNum(txtContact.getText());
+        student1.setGender(selectGender());
 
-        Program program = new Program();
-        program.getStudentList().add(student1);
-
+        /*
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        session.save(program);
+        System.out.println(cmb1);
+        Program program1 = session.get(Program.class, cmb1);
+        Program program2 = session.get(Program.class, cmb2);
+        Program program3 = session.get(Program.class, cmb3);
+        Program program4 = session.get(Program.class, cmb4);
+*/
+
+        /*        if (checkBox2.isSelected()){
+            student1.getProgramList().add();
+        }
+        if (checkBox3.isSelected()){
+            student1.getProgramList().add(program3);
+        }
+        if (checkBox4.isSelected()){
+            student1.getProgramList().add(program4);
+        }*/
+
+        /*student1.getProgramList().add(program1);
+
         session.save(student1);
 
         transaction.commit();
         session.close();*/
 
-        if (studentBO.add(student)) {
+        /*if (studentBO.add(student1)) {
             new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
 
         } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
+        }*/
+
+        if (studentDAO.register(student1,cmb1,cmb2,cmb3,cmb4)) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
+        }else {
+            new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }
+
     }
 
     public void onClickClear(MouseEvent mouseEvent) {
@@ -239,7 +253,7 @@ public class RegisterStudentController {
         clock.play();
     }
 
-    /*    private void setProgramData(String programId){
+/*    private void setProgramData(String programId){
         ProgramDTO programDetails = programBO.getProgramDetails(programId);
 
         System.out.println(programDetails);
@@ -278,6 +292,10 @@ public class RegisterStudentController {
 
         tblRegStudent.setItems(list);
     }
+    String cmb1;
+    String cmb2;
+    String cmb3;
+    String cmb4;
 
     public void initialize() {
         loadProgramId();
@@ -286,18 +304,22 @@ public class RegisterStudentController {
 
         cmbCourseId1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgramData(txtProgram1, txtDuration, txtFee1, newValue);
+            cmb1=newValue;
         });
 
         cmbCourseId2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgramData(txtProgram2, txtDuration2, txtFee2, newValue);
+            cmb2=newValue;
         });
 
         cmbCourseId3.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgramData(txtProgram3, txtDuration3, txtFee3, newValue);
+            cmb3=newValue;
         });
 
         cmbCourseId4.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgramData(txtProgram4, txtDuration4, txtFee4, newValue);
+            cmb4=newValue;
         });
 
         try {

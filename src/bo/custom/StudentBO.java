@@ -2,7 +2,9 @@ package bo.custom;
 
 import bo.SuperBO;
 import dao.custom.StudentDAO;
+import dto.ProgramDTO;
 import dto.StudentDTO;
+import entity.Program;
 import entity.Student;
 import javafx.collections.ObservableList;
 import view.tm.StudentTM;
@@ -22,5 +24,6 @@ public interface StudentBO extends SuperBO {
     boolean delete(String id);
 
     boolean update(StudentDTO studentDTO);
+
 
 }

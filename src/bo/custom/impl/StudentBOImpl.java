@@ -4,7 +4,9 @@ import bo.custom.StudentBO;
 import dao.DAOFactory;
 import dao.custom.StudentDAO;
 import dao.custom.impl.StudentDAOImpl;
+import dto.ProgramDTO;
 import dto.StudentDTO;
+import entity.Program;
 import entity.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +26,7 @@ public class StudentBOImpl implements StudentBO {
 
     @Override
     public boolean add(StudentDTO studentDTO) {
-        return studentDAO.add(new Student(
+        /*return studentDAO.add(new Student(
                 studentDTO.getRegNum(),
                 studentDTO.getName(),
                 studentDTO.getAge(),
@@ -34,7 +36,8 @@ public class StudentBOImpl implements StudentBO {
                 studentDTO.getNic(),
                 studentDTO.getContactNum(),
                 studentDTO.getGender()
-        ));
+        ));*/
+        return false;
     }
 
     @Override
@@ -77,4 +80,6 @@ public class StudentBOImpl implements StudentBO {
                 studentDTO.getGender()
         ));
     }
+
+
 }
