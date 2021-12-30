@@ -182,10 +182,10 @@
                </font>
             </JFXTextField>
             <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="1108.0" layoutY="299.0" onMouseClicked="#onClickAdd" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc71;" styleClass="btn" text="Add" textFill="RED" />
-            <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="1364.0" layoutY="299.0" onMouseClicked="#onClickUpdate" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #3498db;" styleClass="btn" text="Update" textFill="RED" />
             <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="1108.0" layoutY="392.0" onMouseClicked="#onClickClear" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #e74c3c;" styleClass="btn" text="Clear" textFill="RED" />
             <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="1364.0" layoutY="392.0" onMouseClicked="#onClickDelete" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #c0392b;" styleClass="btn" text="Delete" textFill="RED" />
             <Separator layoutX="16.0" layoutY="195.0" prefHeight="18.0" prefWidth="1624.0" />
+            <JFXButton fx:id="btnAddNewProgram" buttonType="RAISED" layoutX="1364.0" layoutY="299.0" onMouseClicked="#onClickAddNewProgram" prefHeight="69.0" prefWidth="200.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc21;" styleClass="btn" text="Add Program" textFill="RED" wrapText="true" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="628.0" prefHeight="376.0" prefWidth="1660.0" styleClass="bottom-pane">

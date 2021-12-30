@@ -7,8 +7,6 @@ import com.jfoenix.controls.*;
 import dao.DAOFactory;
 import dao.custom.impl.StudentDAOImpl;
 import dto.ProgramDTO;
-import dto.StudentDTO;
-import entity.Program;
 import entity.Student;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -19,10 +17,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import util.FactoryConfiguration;
-import view.tm.ProgramTM;
 import view.tm.StudentTM;
 
 import java.sql.SQLException;
@@ -87,6 +81,7 @@ public class RegisterStudentController {
     public TableColumn colContact;
     public TableColumn colGender;
     public JFXTextField txtSearch;
+    public JFXButton btnAddNewProgram;
     String cmb1;
     String cmb2;
     String cmb3;
@@ -98,10 +93,11 @@ public class RegisterStudentController {
 
 
     public void onKeyReleased(KeyEvent keyEvent) {
-
+        ObservableList<StudentTM> search = studentBO.search(txtSearch.getText());
+        tblRegStudent.setItems(search);
     }
 
-    public void onClickUpdate(MouseEvent mouseEvent) {
+    /*public void onClickUpdate(MouseEvent mouseEvent) {
 
         Student student1 = new Student();
 
@@ -117,10 +113,21 @@ public class RegisterStudentController {
 
         if (studentDAO.updateRegister(student1,cmb1,cmb2,cmb3,cmb4)) {
             new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
-        }else {
+        } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }
 
+        //studentDAO.updateNativly(student1, cmb1, cmb2, cmb3, cmb4);
+    }*/
+
+    public void onClickAddNewProgram(MouseEvent mouseEvent) {
+
+
+        if (studentDAO.updateNatively(txtStdnRegNo.getText(), cmb1)) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Try Again").show();
+        }
     }
 
     public void onClickDelete(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
@@ -136,9 +143,9 @@ public class RegisterStudentController {
         student1.setContactNum(txtContact.getText());
         student1.setGender(selectGender());
 
-        if (studentDAO.deleteRegister(student1,cmb1,cmb2,cmb3,cmb4)) {
+        if (studentDAO.deleteRegister(student1, cmb1, cmb2, cmb3, cmb4)) {
             new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
-        }else {
+        } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }
 
@@ -169,9 +176,9 @@ public class RegisterStudentController {
         student1.setContactNum(txtContact.getText());
         student1.setGender(selectGender());
 
-        if (studentDAO.register(student1,cmb1,cmb2,cmb3,cmb4)) {
+        if (studentDAO.register(student1, cmb1, cmb2, cmb3, cmb4)) {
             new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
-        }else {
+        } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }
 
@@ -214,7 +221,6 @@ public class RegisterStudentController {
     }
 
     public void onClickClear(MouseEvent mouseEvent) {
-
     }
 
     private void loadProgramId() {
@@ -253,6 +259,11 @@ public class RegisterStudentController {
             txtProgram2.setDisable(true);
             txtDuration2.setDisable(true);
             txtFee2.setDisable(true);
+
+            cmbCourseId2.setValue("");
+            txtProgram2.clear();
+            txtDuration2.clear();
+            txtFee2.clear();
         }
 
         if (checkBox3.isSelected()) {
@@ -265,6 +276,11 @@ public class RegisterStudentController {
             txtProgram3.setDisable(true);
             txtDuration3.setDisable(true);
             txtFee3.setDisable(true);
+
+            cmbCourseId3.setValue("");
+            txtProgram3.clear();
+            txtDuration3.clear();
+            txtFee3.clear();
         }
 
         if (checkBox4.isSelected()) {
@@ -272,11 +288,17 @@ public class RegisterStudentController {
             txtProgram4.setDisable(false);
             txtDuration4.setDisable(false);
             txtFee4.setDisable(false);
+
         } else {
             cmbCourseId4.setDisable(true);
             txtProgram4.setDisable(true);
             txtDuration4.setDisable(true);
             txtFee4.setDisable(true);
+
+            txtProgram4.clear();
+            txtDuration4.clear();
+            txtFee4.clear();
+            cmbCourseId4.setValue("");
         }
     }
 
@@ -324,23 +346,26 @@ public class RegisterStudentController {
     }
 
     public void tblOnMouseClick(MouseEvent mouseEvent) {
-        StudentTM selectedItem = tblRegStudent.getSelectionModel().getSelectedItem();
-        txtStdnRegNo.setText(selectedItem.getRegNum());
-        txtName.setText(selectedItem.getName());
-        txtAge.setText(String.valueOf(selectedItem.getAge()));
-        txtAddress.setText(selectedItem.getAddress());
-        txtEmail.setText(selectedItem.getEmail());
-        txtDOB.setText(selectedItem.getDob());
-        txtNic.setText(selectedItem.getNic());
-        txtContact.setText(selectedItem.getContactNum());
+        try {
+            StudentTM selectedItem = tblRegStudent.getSelectionModel().getSelectedItem();
+            txtStdnRegNo.setText(selectedItem.getRegNum());
+            txtName.setText(selectedItem.getName());
+            txtAge.setText(String.valueOf(selectedItem.getAge()));
+            txtAddress.setText(selectedItem.getAddress());
+            txtEmail.setText(selectedItem.getEmail());
+            txtDOB.setText(selectedItem.getDob());
+            txtNic.setText(selectedItem.getNic());
+            txtContact.setText(selectedItem.getContactNum());
 
-        if (selectedItem.getGender().equals("Male")){
-            txtGenderMale.setSelected(true);
-        }else if (selectedItem.getGender().equals("Female")){
-            txtGenderFemale.setSelected(true);
+
+            if (selectedItem.getGender().equals("Male")) {
+                txtGenderMale.setSelected(true);
+            } else if (selectedItem.getGender().equals("Female")) {
+                txtGenderFemale.setSelected(true);
+            }
+        } catch (Exception e) {
+
         }
-
-        cmbCourseId1.setValue("P-005");
 
 
     }
@@ -352,22 +377,22 @@ public class RegisterStudentController {
 
         cmbCourseId1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgramData(txtProgram1, txtDuration, txtFee1, newValue);
-            cmb1=newValue;
+            cmb1 = newValue;
         });
 
         cmbCourseId2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgramData(txtProgram2, txtDuration2, txtFee2, newValue);
-            cmb2=newValue;
+            cmb2 = newValue;
         });
 
         cmbCourseId3.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgramData(txtProgram3, txtDuration3, txtFee3, newValue);
-            cmb3=newValue;
+            cmb3 = newValue;
         });
 
         cmbCourseId4.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgramData(txtProgram4, txtDuration4, txtFee4, newValue);
-            cmb4=newValue;
+            cmb4 = newValue;
         });
 
         try {
@@ -377,5 +402,6 @@ public class RegisterStudentController {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 }

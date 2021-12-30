@@ -2,18 +2,13 @@ package bo.custom.impl;
 
 import bo.custom.StudentBO;
 import dao.DAOFactory;
-import dao.custom.StudentDAO;
 import dao.custom.impl.StudentDAOImpl;
-import dto.ProgramDTO;
 import dto.StudentDTO;
-import entity.Program;
 import entity.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import view.tm.ProgramTM;
 import view.tm.StudentTM;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -79,6 +74,27 @@ public class StudentBOImpl implements StudentBO {
                 studentDTO.getContactNum(),
                 studentDTO.getGender()
         ));
+    }
+
+    @Override
+    public ObservableList<StudentTM> search(String value) {
+        List<Student> list = studentDAO.searchStudent(value);
+        ObservableList<StudentTM> dtoArrayList = FXCollections.observableArrayList();
+
+        for (Student student : list) {
+            dtoArrayList.add(new StudentTM(
+                    student.getRegNum(),
+                    student.getAddress(),
+                    student.getAge(),
+                    student.getContactNum(),
+                    student.getDob(),
+                    student.getEmail(),
+                    student.getGender(),
+                    student.getName(),
+                    student.getNic()
+            ));
+        }
+        return dtoArrayList;
     }
 
 

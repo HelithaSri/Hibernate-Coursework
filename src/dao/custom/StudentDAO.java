@@ -1,7 +1,6 @@
 package dao.custom;
 
 import dao.SupperDAO;
-import entity.Program;
 import entity.Student;
 
 import java.util.List;
@@ -14,7 +13,10 @@ import java.util.List;
 public interface StudentDAO extends SupperDAO<Student, String> {
     boolean register(Student student, String cmb1, String cmb2, String cmb3, String cmb4);
 
-    boolean updateRegister(Student student, String cmb1, String cmb2, String cmb3, String cmb4);
-
     boolean deleteRegister(Student student, String cmb1, String cmb2, String cmb3, String cmb4);
+
+    List<Student> searchStudent(String value);
+
+    boolean updateNatively(String studentRegNo, String cmb1);
+
 }

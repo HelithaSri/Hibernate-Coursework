@@ -46,6 +46,14 @@
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
 }
+.btn1{
+    -fx-background-radius: 50px;
+    /*-fx-pref-width: 200px;
+    -fx-pref-height: 60px;*/
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
 #search{
     -fx-fill: #1e6ef8;
 }
