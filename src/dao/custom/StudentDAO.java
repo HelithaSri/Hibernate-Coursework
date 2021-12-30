@@ -13,4 +13,8 @@ import java.util.List;
  */
 public interface StudentDAO extends SupperDAO<Student, String> {
     boolean register(Student student, String cmb1, String cmb2, String cmb3, String cmb4);
+
+    boolean updateRegister(Student student, String cmb1, String cmb2, String cmb3, String cmb4);
+
+    boolean deleteRegister(Student student, String cmb1, String cmb2, String cmb3, String cmb4);
 }

@@ -76,7 +76,7 @@ public class RegisterStudentController {
     public JFXButton btnDelete;
     public JFXButton btnAdd;
     public JFXButton btnClear;
-    public TableView tblRegStudent;
+    public TableView<StudentTM> tblRegStudent;
     public TableColumn colStudentRegNo;
     public TableColumn colName;
     public TableColumn colAge;
@@ -87,10 +87,15 @@ public class RegisterStudentController {
     public TableColumn colContact;
     public TableColumn colGender;
     public JFXTextField txtSearch;
+    String cmb1;
+    String cmb2;
+    String cmb3;
+    String cmb4;
 
     StudentBOImpl studentBO = (StudentBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.STUDENT);
     ProgramBOImpl programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.PROGRAM);
     StudentDAOImpl studentDAO = (StudentDAOImpl) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+
 
     public void onKeyReleased(KeyEvent keyEvent) {
 
@@ -98,9 +103,45 @@ public class RegisterStudentController {
 
     public void onClickUpdate(MouseEvent mouseEvent) {
 
+        Student student1 = new Student();
+
+        student1.setRegNum(txtStdnRegNo.getText());
+        student1.setName(txtName.getText());
+        student1.setAge(Integer.parseInt(txtAge.getText()));
+        student1.setAddress(txtAddress.getText());
+        student1.setEmail(txtEmail.getText());
+        student1.setDob(txtDOB.getText());
+        student1.setNic(txtNic.getText());
+        student1.setContactNum(txtContact.getText());
+        student1.setGender(selectGender());
+
+        if (studentDAO.updateRegister(student1,cmb1,cmb2,cmb3,cmb4)) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
+        }else {
+            new Alert(Alert.AlertType.WARNING, "Try Again").show();
+        }
+
     }
 
-    public void onClickDelete(MouseEvent mouseEvent) {
+    public void onClickDelete(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        Student student1 = new Student();
+
+        student1.setRegNum(txtStdnRegNo.getText());
+        student1.setName(txtName.getText());
+        student1.setAge(Integer.parseInt(txtAge.getText()));
+        student1.setAddress(txtAddress.getText());
+        student1.setEmail(txtEmail.getText());
+        student1.setDob(txtDOB.getText());
+        student1.setNic(txtNic.getText());
+        student1.setContactNum(txtContact.getText());
+        student1.setGender(selectGender());
+
+        if (studentDAO.deleteRegister(student1,cmb1,cmb2,cmb3,cmb4)) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
+        }else {
+            new Alert(Alert.AlertType.WARNING, "Try Again").show();
+        }
+
 
     }
 
@@ -127,6 +168,12 @@ public class RegisterStudentController {
         student1.setNic(txtNic.getText());
         student1.setContactNum(txtContact.getText());
         student1.setGender(selectGender());
+
+        if (studentDAO.register(student1,cmb1,cmb2,cmb3,cmb4)) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
+        }else {
+            new Alert(Alert.AlertType.WARNING, "Try Again").show();
+        }
 
         /*
         Session session = FactoryConfiguration.getInstance().getSession();
@@ -163,11 +210,6 @@ public class RegisterStudentController {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }*/
 
-        if (studentDAO.register(student1,cmb1,cmb2,cmb3,cmb4)) {
-            new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
-        }else {
-            new Alert(Alert.AlertType.WARNING, "Try Again").show();
-        }
 
     }
 
@@ -253,18 +295,6 @@ public class RegisterStudentController {
         clock.play();
     }
 
-/*    private void setProgramData(String programId){
-        ProgramDTO programDetails = programBO.getProgramDetails(programId);
-
-        System.out.println(programDetails);
-        if (programDetails == null){
-        } else {
-            txtProgram1.setText(programDetails.getProgramName());
-            txtDuration.setText(programDetails.getDuration());
-            txtFee1.setText(programDetails.getFee()+"");
-        }
-    }*/
-
     private void setProgramData(JFXTextField enterProgram, JFXTextField enterDuration, JFXTextField enterFee, String ProgramID) {
         ProgramDTO programDetails = programBO.getProgramDetails(ProgramID);
 
@@ -292,10 +322,28 @@ public class RegisterStudentController {
 
         tblRegStudent.setItems(list);
     }
-    String cmb1;
-    String cmb2;
-    String cmb3;
-    String cmb4;
+
+    public void tblOnMouseClick(MouseEvent mouseEvent) {
+        StudentTM selectedItem = tblRegStudent.getSelectionModel().getSelectedItem();
+        txtStdnRegNo.setText(selectedItem.getRegNum());
+        txtName.setText(selectedItem.getName());
+        txtAge.setText(String.valueOf(selectedItem.getAge()));
+        txtAddress.setText(selectedItem.getAddress());
+        txtEmail.setText(selectedItem.getEmail());
+        txtDOB.setText(selectedItem.getDob());
+        txtNic.setText(selectedItem.getNic());
+        txtContact.setText(selectedItem.getContactNum());
+
+        if (selectedItem.getGender().equals("Male")){
+            txtGenderMale.setSelected(true);
+        }else if (selectedItem.getGender().equals("Female")){
+            txtGenderFemale.setSelected(true);
+        }
+
+        cmbCourseId1.setValue("P-005");
+
+
+    }
 
     public void initialize() {
         loadProgramId();
