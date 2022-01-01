@@ -9,7 +9,7 @@ import java.util.List;
  * @created 12/24/2021 - 9:07 PM
  * @project HibernateCW
  */
-public interface SupperDAO<Entity extends SuperEntity, Id> {
+public interface SupperDAO<Entity extends SuperEntity, Id> extends SupperDAOUltraProMax{
     boolean add(Entity entitiy);
 
     boolean update(Entity entitiy);

@@ -27,7 +27,7 @@
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="89.0" prefHeight="142.0" prefWidth="1660.0" styleClass="bottom-pane">
          <children>
-            <JFXTextField focusColor="RED" labelFloat="true" layoutX="96.0" layoutY="46.0" onKeyReleased="#onKeyReleased" prefHeight="46.0" prefWidth="413.0" promptText="Search">
+            <JFXTextField fx:id="txtSearch" focusColor="RED" labelFloat="true" layoutX="96.0" layoutY="46.0" onKeyReleased="#onKeyReleased" prefHeight="46.0" prefWidth="413.0" promptText="Search">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
@@ -50,7 +50,7 @@
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="239.0" prefHeight="355.0" prefWidth="1660.0" styleClass="bottom-pane">
          <children>
-            <TableView fx:id="tblStudentDetails" layoutX="23.0" layoutY="23.0" prefHeight="310.0" prefWidth="1615.0">
+            <TableView fx:id="tblStudentDetails" layoutX="23.0" layoutY="23.0" onMouseClicked="#onMouseClickStudentTbl" prefHeight="310.0" prefWidth="1615.0">
                <columns>
                   <TableColumn fx:id="colStdnRegNo" editable="false" prefWidth="205.66665649414062" text="Student Register No" />
                   <TableColumn fx:id="colName" editable="false" minWidth="0.0" prefWidth="189.33334350585938" text="Name" />
@@ -60,7 +60,7 @@
                   <TableColumn fx:id="colDob" editable="false" minWidth="0.0" prefWidth="136.0" text="DOB" />
                   <TableColumn fx:id="colNice" editable="false" minWidth="0.0" prefWidth="200.3333740234375" text="NIC" />
                   <TableColumn fx:id="colContact" editable="false" minWidth="0.0" prefWidth="177.3333740234375" text="Contact No" />
-                  <TableColumn fx:id="colGender" editable="false" minWidth="0.0" prefWidth="90.6666259765625" text="Gender" />
+                  <TableColumn fx:id="colGender" editable="false" minWidth="0.0" prefWidth="102.0" text="Gender" />
                </columns>
             </TableView>
          </children>

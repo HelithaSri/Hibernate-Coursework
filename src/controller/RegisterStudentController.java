@@ -66,7 +66,6 @@ public class RegisterStudentController {
     public JFXTextField txtProgram4;
     public JFXTextField txtDuration4;
     public JFXTextField txtFee4;
-    public JFXButton btnUpdate;
     public JFXButton btnDelete;
     public JFXButton btnAdd;
     public JFXButton btnClear;
@@ -121,8 +120,6 @@ public class RegisterStudentController {
     }*/
 
     public void onClickAddNewProgram(MouseEvent mouseEvent) {
-
-
         if (studentDAO.updateNatively(txtStdnRegNo.getText(), cmb1)) {
             new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
         } else {
@@ -131,6 +128,8 @@ public class RegisterStudentController {
     }
 
     public void onClickDelete(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+
+        /*
         Student student1 = new Student();
 
         student1.setRegNum(txtStdnRegNo.getText());
@@ -144,11 +143,22 @@ public class RegisterStudentController {
         student1.setGender(selectGender());
 
         if (studentDAO.deleteRegister(student1, cmb1, cmb2, cmb3, cmb4)) {
+            showStudentsOnTable();
             new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
         } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }
+*/
 
+        StudentTM selectedItem = tblRegStudent.getSelectionModel().getSelectedItem();
+        String studentId = selectedItem.getRegNum();
+
+        if (studentBO.delete(studentId)) {
+            new Alert(Alert.AlertType.INFORMATION, "Deleted").show();
+            showStudentsOnTable();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Try Again").show();
+        }
 
     }
 
@@ -162,7 +172,7 @@ public class RegisterStudentController {
         }
     }
 
-    public void onClickAdd(MouseEvent mouseEvent) {
+    public void onClickAdd(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
 
         Student student1 = new Student();
 
@@ -177,7 +187,8 @@ public class RegisterStudentController {
         student1.setGender(selectGender());
 
         if (studentDAO.register(student1, cmb1, cmb2, cmb3, cmb4)) {
-            new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
+            showStudentsOnTable();
+            new Alert(Alert.AlertType.CONFIRMATION, "Student Registered").show();
         } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }
@@ -357,16 +368,16 @@ public class RegisterStudentController {
             txtNic.setText(selectedItem.getNic());
             txtContact.setText(selectedItem.getContactNum());
 
-
+            //Change Male Female
             if (selectedItem.getGender().equals("Male")) {
                 txtGenderMale.setSelected(true);
             } else if (selectedItem.getGender().equals("Female")) {
                 txtGenderFemale.setSelected(true);
             }
+
         } catch (Exception e) {
 
         }
-
 
     }
 

@@ -53,9 +53,8 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Query query = session.createQuery("from Student");
+        Query query = session.createQuery("from Student s ORDER BY s.regNum DESC ");
         List<Student> list = query.list();
-
 
         transaction.commit();
         session.close();
@@ -71,10 +70,8 @@ public class StudentDAOImpl implements StudentDAO {
 //        System.out.println("cmd 2 :"+cmb2);
 //        System.out.println("cmd 3 :"+cmb3);
 //        System.out.println("cmd 4 :"+cmb4);
-
         /*Program program1 = session.get(Program.class, cmb1);
         student.getProgramList().add(program1);*/
-
 
         if (cmb1 != null && !cmb1.trim().isEmpty()) {
             Program program1 = session.get(Program.class, cmb1);
@@ -159,10 +156,10 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        System.out.println(studentRegNo);
-        System.out.println(cmb1);
-        int i = session.createNativeQuery("INSERT INTO STUDENT_PROGRAM VALUES(?, ?)").setParameter(1, studentRegNo).setParameter(2, cmb1).executeUpdate();
-        System.out.println("hey : "+i);
+//        System.out.println(studentRegNo);
+//        System.out.println(cmb1);
+          session.createNativeQuery("INSERT INTO STUDENT_PROGRAM VALUES(?, ?)").setParameter(1, studentRegNo).setParameter(2, cmb1).executeUpdate();
+//        System.out.println("hey : "+i);
 
        /* Query query = session.createQuery("FROM Student s WHERE s.regNum LIKE ?1");
         query.setParameter(1, '%' + value + '%');

@@ -1,8 +1,10 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
  */
 
 @Entity
+
 public class Program implements SuperEntity{
     @Id
     private
@@ -22,8 +25,8 @@ public class Program implements SuperEntity{
     private double fee;
 
     @ManyToMany(mappedBy = "programList")
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Student> studentList = new ArrayList<>();
-
     public Program() {
     }
 

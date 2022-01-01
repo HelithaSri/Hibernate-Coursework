@@ -1,6 +1,7 @@
 package dao;
 
 import dao.custom.impl.ProgramDAOImpl;
+import dao.custom.impl.QueryDAOImpl;
 import dao.custom.impl.StudentDAOImpl;
 
 /**
@@ -21,17 +22,19 @@ public class DAOFactory {
         return daoFactory;
     }
 
-    public SupperDAO getDAO(DAOTypes types){
+    public SupperDAOUltraProMax getDAO(DAOTypes types){
         switch (types){
             case STUDENT:
                 return new StudentDAOImpl();
             case PROGRAM:
                 return new ProgramDAOImpl();
+            case Query:
+                return new QueryDAOImpl();
             default:
                 return null;
         }
     }
     public enum DAOTypes{
-        STUDENT, PROGRAM
+        STUDENT, PROGRAM, Query
     }
 }
