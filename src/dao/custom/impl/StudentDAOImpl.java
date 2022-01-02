@@ -106,10 +106,12 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
+/*
         System.out.println("cmd 1 :" + cmb1);
         System.out.println("cmd 2 :" + cmb2);
         System.out.println("cmd 3 :" + cmb3);
         System.out.println("cmd 4 :" + cmb4);
+*/
 
         if (cmb1 != null && !cmb1.trim().isEmpty()) {
             Program program1 = session.get(Program.class, cmb1);

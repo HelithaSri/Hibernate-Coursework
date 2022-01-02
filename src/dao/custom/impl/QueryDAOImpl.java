@@ -37,7 +37,6 @@ public class QueryDAOImpl implements QueryDAO {
             System.out.println(program.getProgramId());
         }*/
 
-
         transaction.commit();
         session.close();
         return list;

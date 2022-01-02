@@ -93,7 +93,7 @@ public class ProgramDAOImpl implements ProgramDAO {
         Query query = session.createQuery("SELECT p.programId FROM Program p");
         List<String> list = query.list();
 
-        System.out.println(list);
+//        System.out.println(list);
 
 
         transaction.commit();

@@ -57,6 +57,7 @@ public class StudentDetailsController {
 
 
     public void btnClear(MouseEvent mouseEvent) {
+        txtSearch.setText("");
     }
 
     public void onKeyReleased(KeyEvent keyEvent) {
@@ -80,8 +81,13 @@ public class StudentDetailsController {
     }
 
     public void onMouseClickStudentTbl(MouseEvent mouseEvent) {
-        StudentTM selectedItem = tblStudentDetails.getSelectionModel().getSelectedItem();
-        String regNum = selectedItem.getRegNum();
+        String regNum = null;
+        try {
+            StudentTM selectedItem = tblStudentDetails.getSelectionModel().getSelectedItem();
+            regNum = selectedItem.getRegNum();
+        } catch (Exception e) {
+
+        }
         ObservableList<ProgramTM> studentPrograms = programBO.getStudentPrograms(regNum);
         tblProgram.setItems(studentPrograms);
 
@@ -90,13 +96,11 @@ public class StudentDetailsController {
         colDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         colFee.setCellValueFactory(new PropertyValueFactory<>("fee"));
 
-        System.out.println(studentPrograms);
     }
 
     public void showStudentsOnTable() throws SQLException, ClassNotFoundException {
 
         ObservableList<StudentTM> list = studentBO.find();
-
         colStdnRegNo.setCellValueFactory(new PropertyValueFactory<>("regNum"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
@@ -106,7 +110,6 @@ public class StudentDetailsController {
         colNice.setCellValueFactory(new PropertyValueFactory<>("nic"));
         colContact.setCellValueFactory(new PropertyValueFactory<>("contactNum"));
         colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-
         tblStudentDetails.setItems(list);
     }
 
