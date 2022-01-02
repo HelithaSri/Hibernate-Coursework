@@ -2,20 +2,20 @@ package controller;
 
 import bo.BOFactory;
 import bo.custom.impl.ProgramBOImpl;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import dto.ProgramDTO;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import util.Validation;
 import view.tm.ProgramTM;
 
 import java.sql.SQLException;
@@ -23,6 +23,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.regex.Pattern;
 
 /**
  * @author HelithaSri
@@ -43,8 +45,23 @@ public class AddProgramsController {
     public JFXTextField txtSearch;
     public Label lblDate;
     public Label lblTime;
+    public JFXButton btnAdd;
 
     ProgramBOImpl programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.PROGRAM);
+
+    LinkedHashMap<JFXTextField, Pattern> map = new LinkedHashMap<>();
+    Pattern courserIdPattern = Pattern.compile("^(P)[-]?[0-9]{3}$");
+    Pattern courserNamePattern = Pattern.compile("^[A-z ]{1,30}$");
+    Pattern courserDurationPattern = Pattern.compile("^[A-z 0-9 ]{1,10}$");
+    Pattern courserFeePattern = Pattern.compile("^(?:0|[1-9]\\d*)(?:\\.(?!.*000)\\d+)?$");
+
+    private void storeValidations() {
+        map.put(txtProgramId,courserIdPattern);
+        map.put(txtProgram,courserNamePattern);
+        map.put(txtDuration,courserDurationPattern);
+        map.put(txtFee,courserFeePattern);
+
+    }
 
     public void btnUpdate(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         ProgramDTO program = new ProgramDTO(
@@ -211,7 +228,20 @@ public class AddProgramsController {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         loadDateAndTime();
+        storeValidations();
+    }
+
+    public void courseKeyRelease(KeyEvent keyEvent) {
+        btnAdd.setDisable(true);
+        Object response = Validation.validate(map,btnAdd);
+        if (keyEvent.getCode()== KeyCode.ENTER) {
+            if (response instanceof TextField){
+                TextField error  = (TextField) response;
+                error.requestFocus();
+            }else if (response instanceof Boolean){
+                new Alert(Alert.AlertType.CONFIRMATION, "Done").show();
+            }
+        }
     }
 }

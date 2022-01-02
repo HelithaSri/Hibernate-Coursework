@@ -22,27 +22,27 @@
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="89.0" prefHeight="225.0" prefWidth="1660.0" styleClass="bottom-pane">
          <children>
-            <JFXTextField fx:id="txtProgramId" focusColor="RED" labelFloat="true" layoutX="96.0" layoutY="40.0" prefHeight="38.0" prefWidth="200.0" promptText="Program ID">
+            <JFXTextField fx:id="txtProgramId" focusColor="#0f74ee" labelFloat="true" layoutX="96.0" layoutY="40.0" onKeyReleased="#courseKeyRelease" prefHeight="38.0" prefWidth="200.0" promptText="Program ID">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtProgram" focusColor="RED" labelFloat="true" layoutX="318.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Program">
+            <JFXTextField fx:id="txtProgram" focusColor="#0f74ee" labelFloat="true" layoutX="318.0" layoutY="40.0" onKeyReleased="#courseKeyRelease" prefHeight="29.0" prefWidth="230.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtDuration" focusColor="RED" labelFloat="true" layoutX="571.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Duration">
+            <JFXTextField fx:id="txtDuration" focusColor="#0f74ee" labelFloat="true" layoutX="571.0" layoutY="40.0" onKeyReleased="#courseKeyRelease" prefHeight="29.0" prefWidth="230.0" promptText="Duration">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtFee" focusColor="RED" labelFloat="true" layoutX="824.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Fee (LKR)">
+            <JFXTextField fx:id="txtFee" focusColor="#0f74ee" labelFloat="true" layoutX="824.0" layoutY="40.0" onKeyReleased="#courseKeyRelease" prefHeight="29.0" prefWidth="230.0" promptText="Fee (LKR)">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXButton buttonType="RAISED" layoutX="767.0" layoutY="122.0" onMouseClicked="#btnAdd" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc71;" styleClass="btn" text="Add" textFill="RED" />
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="767.0" layoutY="122.0" onMouseClicked="#btnAdd" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc71;" styleClass="btn" text="Add" textFill="RED" />
             <JFXButton buttonType="RAISED" layoutX="988.0" layoutY="122.0" onMouseClicked="#btnUpdate" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #3498db;" styleClass="btn" text="Update" textFill="RED" />
             <JFXButton buttonType="RAISED" layoutX="1209.0" layoutY="121.0" onMouseClicked="#btnClear" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #e74c3c;" styleClass="btn" text="Clear" textFill="RED" />
             <JFXButton buttonType="RAISED" layoutX="1429.0" layoutY="121.0" onMouseClicked="#btnDelete" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #c0392b;" styleClass="btn" text="Delete" textFill="RED" />

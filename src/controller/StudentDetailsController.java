@@ -3,7 +3,6 @@ package controller;
 import bo.BOFactory;
 import bo.custom.impl.ProgramBOImpl;
 import bo.custom.impl.StudentBOImpl;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -111,7 +110,7 @@ public class StudentDetailsController {
         tblStudentDetails.setItems(list);
     }
 
-    public void initialize(){
+    public void initialize() {
         loadDateAndTime();
         try {
             showStudentsOnTable();
@@ -122,7 +121,7 @@ public class StudentDetailsController {
         }
 
         ObservableList<ProgramTM> studentPrograms = programBO.getStudentPrograms("S-001");
-        for (ProgramTM tm: studentPrograms){
+        for (ProgramTM tm : studentPrograms) {
             System.out.println(tm.getProgramName());
             System.out.println(tm.getDuration());
             System.out.println(tm.getFee());

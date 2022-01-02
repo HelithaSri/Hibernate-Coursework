@@ -14,9 +14,11 @@ import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import util.Validation;
 import view.tm.StudentTM;
 
 import java.sql.SQLException;
@@ -24,7 +26,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * @author HelithaSri
@@ -90,6 +94,26 @@ public class RegisterStudentController {
     ProgramBOImpl programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.PROGRAM);
     StudentDAOImpl studentDAO = (StudentDAOImpl) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
 
+    LinkedHashMap<JFXTextField, Pattern> map = new LinkedHashMap<>();
+    Pattern studentIdPattern = Pattern.compile("^(S)[-]?[0-9]{3}$");
+    Pattern studentNamePattern = Pattern.compile("^[A-z ]{1,30}$");
+    Pattern studentNicPattern = Pattern.compile("^[0-9]{9}[v]|[0-9]{12}$");
+    Pattern address = Pattern.compile("^[A-z 0-9 \\/\\,]{2,50}[A-z 0-9]{1,50}$");
+    Pattern phoneNo = Pattern.compile("^(077|071|078|075|076|072)[-]?[0-9]{7}$");
+    Pattern studentAgePattern = Pattern.compile("^[0-9]{2}$");
+    Pattern studentEmailPattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+    Pattern studentDobPattern = Pattern.compile("^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$");
+
+    private void storeValidations() {
+        map.put(txtStdnRegNo,studentIdPattern);
+        map.put(txtName,studentNamePattern);
+        map.put(txtAge,studentAgePattern);
+        map.put(txtAddress,address);
+        map.put(txtEmail,studentEmailPattern);
+        map.put(txtDOB,studentDobPattern);
+        map.put(txtNic,studentNicPattern);
+        map.put(txtContact,phoneNo);
+    }
 
     public void onKeyReleased(KeyEvent keyEvent) {
         ObservableList<StudentTM> search = studentBO.search(txtSearch.getText());
@@ -121,7 +145,8 @@ public class RegisterStudentController {
 
     public void onClickAddNewProgram(MouseEvent mouseEvent) {
         if (studentDAO.updateNatively(txtStdnRegNo.getText(), cmb1)) {
-            new Alert(Alert.AlertType.CONFIRMATION, "Program Added").show();
+            clear();
+            new Alert(Alert.AlertType.INFORMATION, "Program Added").show();
         } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }
@@ -156,6 +181,7 @@ public class RegisterStudentController {
         if (studentBO.delete(studentId)) {
             new Alert(Alert.AlertType.INFORMATION, "Deleted").show();
             showStudentsOnTable();
+            clear();
         } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }
@@ -188,7 +214,8 @@ public class RegisterStudentController {
 
         if (studentDAO.register(student1, cmb1, cmb2, cmb3, cmb4)) {
             showStudentsOnTable();
-            new Alert(Alert.AlertType.CONFIRMATION, "Student Registered").show();
+            clear();
+            new Alert(Alert.AlertType.INFORMATION, "Student Registered").show();
         } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
         }
@@ -231,7 +258,30 @@ public class RegisterStudentController {
 
     }
 
+    private void clear() {
+        txtStdnRegNo.clear();
+        txtName.clear();
+        txtAddress.clear();
+        txtAge.clear();
+        txtEmail.clear();
+        txtDOB.clear();
+        txtNic.clear();
+        txtContact.clear();
+        txtGenderMale.setSelected(true);
+        txtProgram1.clear();
+        txtDuration.clear();
+        txtFee1.clear();
+        txtSearch.clear();
+        cmbCourseId1.setValue("");
+        checkBox2.setSelected(false);
+        checkBox3.setSelected(false);
+        checkBox4.setSelected(false);
+        checkBoxDisable();
+        isSelectedBox();
+    }
+
     public void onClickClear(MouseEvent mouseEvent) {
+        clear();
     }
 
     private void loadProgramId() {
@@ -259,7 +309,7 @@ public class RegisterStudentController {
         txtFee4.setDisable(true);
     }
 
-    public void onClickCheckBox(MouseEvent mouseEvent) {
+    private void isSelectedBox() {
         if (checkBox2.isSelected()) {
             cmbCourseId2.setDisable(false);
             txtProgram2.setDisable(false);
@@ -311,6 +361,61 @@ public class RegisterStudentController {
             txtFee4.clear();
             cmbCourseId4.setValue("");
         }
+    }
+
+    public void onClickCheckBox(MouseEvent mouseEvent) {
+        /*if (checkBox2.isSelected()) {
+            cmbCourseId2.setDisable(false);
+            txtProgram2.setDisable(false);
+            txtDuration2.setDisable(false);
+            txtFee2.setDisable(false);
+        } else {
+            cmbCourseId2.setDisable(true);
+            txtProgram2.setDisable(true);
+            txtDuration2.setDisable(true);
+            txtFee2.setDisable(true);
+
+            cmbCourseId2.setValue("");
+            txtProgram2.clear();
+            txtDuration2.clear();
+            txtFee2.clear();
+        }
+
+        if (checkBox3.isSelected()) {
+            cmbCourseId3.setDisable(false);
+            txtProgram3.setDisable(false);
+            txtDuration3.setDisable(false);
+            txtFee3.setDisable(false);
+        } else {
+            cmbCourseId3.setDisable(true);
+            txtProgram3.setDisable(true);
+            txtDuration3.setDisable(true);
+            txtFee3.setDisable(true);
+
+            cmbCourseId3.setValue("");
+            txtProgram3.clear();
+            txtDuration3.clear();
+            txtFee3.clear();
+        }
+
+        if (checkBox4.isSelected()) {
+            cmbCourseId4.setDisable(false);
+            txtProgram4.setDisable(false);
+            txtDuration4.setDisable(false);
+            txtFee4.setDisable(false);
+
+        } else {
+            cmbCourseId4.setDisable(true);
+            txtProgram4.setDisable(true);
+            txtDuration4.setDisable(true);
+            txtFee4.setDisable(true);
+
+            txtProgram4.clear();
+            txtDuration4.clear();
+            txtFee4.clear();
+            cmbCourseId4.setValue("");
+        }*/
+        isSelectedBox();
     }
 
     private void loadDateAndTime() {
@@ -385,6 +490,7 @@ public class RegisterStudentController {
         loadProgramId();
         checkBoxDisable();
         loadDateAndTime();
+        storeValidations();
 
         cmbCourseId1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgramData(txtProgram1, txtDuration, txtFee1, newValue);
@@ -414,5 +520,18 @@ public class RegisterStudentController {
             e.printStackTrace();
         }
 
+    }
+
+    public void studentOnKeyReleased(KeyEvent keyEvent) {
+        btnAdd.setDisable(true);
+        Object response = Validation.validate(map,btnAdd);
+        if (keyEvent.getCode()== KeyCode.ENTER) {
+            if (response instanceof TextField){
+                TextField error  = (TextField) response;
+                error.requestFocus();
+            }else if (response instanceof Boolean){
+                new Alert(Alert.AlertType.CONFIRMATION, "Done").show();
+            }
+        }
     }
 }

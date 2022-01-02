@@ -6,6 +6,7 @@
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -38,42 +39,42 @@
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="89.0" prefHeight="530.0" prefWidth="1660.0" styleClass="bottom-pane">
          <children>
-            <JFXTextField fx:id="txtStdnRegNo" focusColor="#0046ff" labelFloat="true" layoutX="96.0" layoutY="40.0" prefHeight="29.0" prefWidth="158.0" promptText="Student Reg No">
+            <JFXTextField fx:id="txtStdnRegNo" focusColor="#0046ff" labelFloat="true" layoutX="96.0" layoutY="40.0" onKeyReleased="#studentOnKeyReleased" prefHeight="29.0" prefWidth="158.0" promptText="Student Reg No">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtName" focusColor="#0046ff" labelFloat="true" layoutX="280.0" layoutY="40.0" prefHeight="29.0" prefWidth="230.0" promptText="Name">
+            <JFXTextField fx:id="txtName" focusColor="#0046ff" labelFloat="true" layoutX="280.0" layoutY="40.0" onKeyReleased="#studentOnKeyReleased" prefHeight="29.0" prefWidth="230.0" promptText="Name">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtAge" focusColor="#0046ff" labelFloat="true" layoutX="535.0" layoutY="40.0" prefHeight="29.0" prefWidth="69.0" promptText="Age">
+            <JFXTextField fx:id="txtAge" focusColor="#0046ff" labelFloat="true" layoutX="535.0" layoutY="40.0" onKeyReleased="#studentOnKeyReleased" prefHeight="29.0" prefWidth="69.0" promptText="Age">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtAddress" focusColor="#0046ff" labelFloat="true" layoutX="629.0" layoutY="40.0" prefHeight="29.0" prefWidth="354.0" promptText="Address">
+            <JFXTextField fx:id="txtAddress" focusColor="#0046ff" labelFloat="true" layoutX="629.0" layoutY="40.0" onKeyReleased="#studentOnKeyReleased" prefHeight="29.0" prefWidth="354.0" promptText="Address">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtEmail" focusColor="#0046ff" labelFloat="true" layoutX="1008.0" layoutY="40.0" prefHeight="29.0" prefWidth="200.0" promptText="Email">
+            <JFXTextField fx:id="txtEmail" focusColor="#0046ff" labelFloat="true" layoutX="1008.0" layoutY="40.0" onKeyReleased="#studentOnKeyReleased" prefHeight="29.0" prefWidth="200.0" promptText="Email">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtDOB" focusColor="#0046ff" labelFloat="true" layoutX="1232.0" layoutY="40.0" prefHeight="29.0" prefWidth="150.0" promptText="DOB">
+            <JFXTextField fx:id="txtDOB" focusColor="#0046ff" labelFloat="true" layoutX="1232.0" layoutY="40.0" onKeyReleased="#studentOnKeyReleased" prefHeight="29.0" prefWidth="150.0" promptText="DOB">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtNic" focusColor="#0046ff" labelFloat="true" layoutX="1408.0" layoutY="40.0" prefHeight="29.0" prefWidth="154.0" promptText="NIC">
+            <JFXTextField fx:id="txtNic" focusColor="#0046ff" labelFloat="true" layoutX="1408.0" layoutY="40.0" onKeyReleased="#studentOnKeyReleased" prefHeight="29.0" prefWidth="154.0" promptText="NIC">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtContact" focusColor="#0046ff" labelFloat="true" layoutX="96.0" layoutY="130.0" prefHeight="29.0" prefWidth="158.0" promptText="Contact No">
+            <JFXTextField fx:id="txtContact" focusColor="#0046ff" labelFloat="true" layoutX="96.0" layoutY="130.0" onKeyReleased="#studentOnKeyReleased" prefHeight="29.0" prefWidth="158.0" promptText="Contact No">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
                </font>
@@ -102,7 +103,10 @@
                   <Font size="15.0" />
                </font>
             </JFXCheckBox>
-            <JFXComboBox fx:id="cmbCourseId1" labelFloat="true" layoutX="96.0" layoutY="237.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
+            <JFXComboBox fx:id="cmbCourseId1" labelFloat="true" layoutX="96.0" layoutY="237.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXComboBox>
             <JFXTextField fx:id="txtProgram1" focusColor="#0046ff" labelFloat="true" layoutX="330.0" layoutY="234.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
@@ -123,7 +127,10 @@
                   <Font size="15.0" />
                </font>
             </JFXCheckBox>
-            <JFXComboBox fx:id="cmbCourseId2" labelFloat="true" layoutX="96.0" layoutY="307.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
+            <JFXComboBox fx:id="cmbCourseId2" labelFloat="true" layoutX="96.0" layoutY="307.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXComboBox>
             <JFXTextField fx:id="txtProgram2" focusColor="#0046ff" labelFloat="true" layoutX="330.0" layoutY="304.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
@@ -144,7 +151,10 @@
                   <Font size="15.0" />
                </font>
             </JFXCheckBox>
-            <JFXComboBox fx:id="cmbCourseId3" labelFloat="true" layoutX="96.0" layoutY="379.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
+            <JFXComboBox fx:id="cmbCourseId3" labelFloat="true" layoutX="96.0" layoutY="379.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXComboBox>
             <JFXTextField fx:id="txtProgram3" focusColor="#0046ff" labelFloat="true" layoutX="330.0" layoutY="376.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
@@ -165,7 +175,10 @@
                   <Font size="15.0" />
                </font>
             </JFXCheckBox>
-            <JFXComboBox fx:id="cmbCourseId4" labelFloat="true" layoutX="96.0" layoutY="455.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID" />
+            <JFXComboBox fx:id="cmbCourseId4" labelFloat="true" layoutX="96.0" layoutY="455.0" prefHeight="35.0" prefWidth="211.0" promptText="Course ID">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXComboBox>
             <JFXTextField fx:id="txtProgram4" focusColor="#0046ff" labelFloat="true" layoutX="330.0" layoutY="452.0" promptText="Program">
                <font>
                   <Font name="Roboto Bold" size="20.0" />
@@ -181,11 +194,23 @@
                   <Font name="Roboto Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="1108.0" layoutY="299.0" onMouseClicked="#onClickAdd" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc71;" styleClass="btn" text="Register" textFill="RED" />
-            <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="1108.0" layoutY="392.0" onMouseClicked="#onClickClear" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #e74c3c;" styleClass="btn" text="Clear" textFill="RED" />
-            <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="1364.0" layoutY="392.0" onMouseClicked="#onClickDelete" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #c0392b;" styleClass="btn" text="Delete" textFill="RED" />
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="1108.0" layoutY="299.0" onMouseClicked="#onClickAdd" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc71;" styleClass="btn" text="Register" textFill="RED">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="1108.0" layoutY="392.0" onMouseClicked="#onClickClear" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #e74c3c;" styleClass="btn" text="Clear" textFill="RED">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="1364.0" layoutY="392.0" onMouseClicked="#onClickDelete" prefHeight="52.0" prefWidth="176.0" ripplerFill="#374cc3" style="-fx-background-color: #c0392b;" styleClass="btn" text="Delete" textFill="RED">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
             <Separator layoutX="16.0" layoutY="195.0" prefHeight="18.0" prefWidth="1624.0" />
-            <JFXButton fx:id="btnAddNewProgram" buttonType="RAISED" layoutX="1364.0" layoutY="299.0" onMouseClicked="#onClickAddNewProgram" prefHeight="69.0" prefWidth="200.0" ripplerFill="#374cc3" style="-fx-background-color: #2ecc21;" styleClass="btn" text="Add Program" textFill="RED" wrapText="true" />
+            <JFXButton fx:id="btnAddNewProgram" buttonType="RAISED" layoutX="1364.0" layoutY="299.0" onMouseClicked="#onClickAddNewProgram" prefHeight="69.0" prefWidth="200.0" ripplerFill="#374cc3" style="-fx-background-color: #3498db;" styleClass="btn" text="Add Program" textFill="RED" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="628.0" prefHeight="376.0" prefWidth="1660.0" styleClass="bottom-pane">
