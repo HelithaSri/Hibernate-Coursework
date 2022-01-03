@@ -41,7 +41,7 @@ public class ProgramDAOImpl implements ProgramDAO {
     public boolean delete(String Id) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        Program program = session.get(Program.class, Id);
+        Program program = session.get(Program.class, Id); //use fetching here -> Eager fetching
         session.delete(program);
         transaction.commit();
         session.close();

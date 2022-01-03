@@ -25,7 +25,7 @@ public class Program implements SuperEntity{
     private double fee;
 
     @ManyToMany(mappedBy = "programList")
-//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    @Cascade(org.hibernate.annotations.CascadeType.LOCK)
     private List<Student> studentList = new ArrayList<>();
     public Program() {
     }

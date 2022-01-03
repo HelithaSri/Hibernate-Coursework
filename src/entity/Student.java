@@ -28,7 +28,7 @@ public class Student implements SuperEntity {
     private String contactNum;
     private String gender;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany //(cascade = CascadeType.ALL)
 //    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Program> programList = new ArrayList<>();
 
