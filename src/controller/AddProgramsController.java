@@ -119,11 +119,6 @@ public class AddProgramsController {
     }
 
     public void btnClear(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
-        /*txtProgramId.clear();
-        txtProgram.clear();
-        txtDuration.clear();
-        txtFee.clear();
-        showProgramsOnTable();*/
         clear();
 
         /*
